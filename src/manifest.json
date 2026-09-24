@@ -1,0 +1,62 @@
+{
+  "manifest_version": 3,
+  "name": "Pluto AI - Privacy-First Autonomous Web Agent",
+  "version": "2.0.0",
+  "description": "On-device visual perception & sensitive PII protection for lightweight browser agents.",
+  "options_page": "options/options.html",
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "scripting",
+    "storage",
+    "sidePanel"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "side_panel": {
+    "default_path": "sidebar/sidebar.html"
+  },
+  "action": {
+    "default_title": "Privacy Vision Agent (PlutoAI)",
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "models/*",
+        "wasm/*",
+        "icons/*",
+        "demo/*",
+        "tests/*"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

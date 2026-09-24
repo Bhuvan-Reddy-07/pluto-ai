@@ -1,0 +1,28 @@
+{
+  "name": "privacy-vision-agent",
+  "version": "2.0.0",
+  "description": "On-device Visual Perception for Privacy-Preserving Browser Agents",
+  "type": "module",
+  "main": "dist/background.js",
+  "scripts": {
+    "build": "webpack --mode production && node scripts/package-extension.js",
+    "package-ext": "node scripts/package-extension.js",
+    "website": "npx -y serve website -l 3000",
+    "deploy": "powershell -ExecutionPolicy Bypass -File ./scripts/deploy-to-github.ps1",
+    "watch": "webpack --watch --mode development",
+    "dev": "webpack --watch --mode development",
+    "test": "node tests/verify-all-features.js && node tests/test-multistep-execution.js && node tests/test-nlp-engine.js && node tests/test-query-extraction.js && node tests/test-forms-and-quiz.js && node tests/test-devtools-integration.js && node tests/test-core.js"
+  },
+  "dependencies": {
+    "@huggingface/transformers": "^3.0.0",
+    "onnxruntime-web": "^1.18.0"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.268",
+    "copy-webpack-plugin": "^12.0.2",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.4.0",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
+  }
+}

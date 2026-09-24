@@ -1,0 +1,26 @@
+[
+  {
+    "auditId": 1,
+    "sessionId": "SESSION_DEMO_001",
+    "timestamp": 1788176569000,
+    "action": "QUERY_DOM_INDEX",
+    "rawPIIBlocked": 3,
+    "piiTypes": ["aadhaar", "creditCard", "email"],
+    "redactionMode": "blur",
+    "zeroRawPIITransmitted": true,
+    "cryptographicHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "signature": "ECDSA_VERIFIED_78A835FC9F1BE843"
+  },
+  {
+    "auditId": 2,
+    "sessionId": "SESSION_DEMO_002",
+    "timestamp": 1788176570500,
+    "action": "CLICK_SUBMIT_BUTTON",
+    "rawPIIBlocked": 1,
+    "piiTypes": ["panCard"],
+    "redactionMode": "blackout",
+    "zeroRawPIITransmitted": true,
+    "cryptographicHash": "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb",
+    "signature": "ECDSA_VERIFIED_9CE1FDFE92E14498"
+  }
+]

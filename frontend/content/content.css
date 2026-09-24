@@ -1,0 +1,194 @@
+/**
+ * AutoBrowser AI - Content Script Styles (Badges, Laser Pointer, HUD)
+ */
+
+/* Set of Marks (SoM) Badge Overlays */
+.autobrowser-tag-badge {
+  position: absolute !important;
+  z-index: 2147483640 !important;
+  background: linear-gradient(135deg, #06b6d4, #3b82f6) !important;
+  color: #000000 !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+  padding: 3px 6px !important;
+  border-radius: 4px !important;
+  border: 1.5px solid #ffffff !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 6px rgba(6, 182, 212, 0.6) !important;
+  pointer-events: none !important;
+  transform: translate(-30%, -50%) !important;
+  transition: opacity 0.15s ease !important;
+  white-space: nowrap !important;
+  user-select: none !important;
+}
+
+/* Target Element Neon Highlight */
+.autobrowser-target-highlight {
+  outline: 3px solid #06b6d4 !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 16px rgba(6, 182, 212, 0.7), inset 0 0 8px rgba(6, 182, 212, 0.3) !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  animation: autobrowser-pulse-glow 1.2s infinite alternate !important;
+}
+
+@keyframes autobrowser-pulse-glow {
+  0% {
+    outline-color: #06b6d4;
+    box-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+  }
+  100% {
+    outline-color: #818cf8;
+    box-shadow: 0 0 22px rgba(129, 140, 248, 0.85);
+  }
+}
+
+/* Futuristic AI Laser Cursor */
+#autobrowser-laser-cursor {
+  position: fixed !important;
+  width: 24px !important;
+  height: 24px !important;
+  z-index: 2147483646 !important;
+  pointer-events: none !important;
+  transform: translate(-2px, -2px) !important;
+  transition: top 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), left 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+  filter: drop-shadow(0 0 8px rgba(6, 182, 212, 0.9));
+}
+
+#autobrowser-laser-cursor svg {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Click Ripple Pulse Effect */
+.autobrowser-click-ripple {
+  position: fixed !important;
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 50% !important;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.8) 0%, rgba(99, 102, 241, 0) 70%) !important;
+  border: 2px solid #06b6d4 !important;
+  z-index: 2147483645 !important;
+  pointer-events: none !important;
+  transform: translate(-50%, -50%) scale(0.2) !important;
+  animation: autobrowser-ripple-expand 0.65s cubic-bezier(0.1, 0.9, 0.2, 1) forwards !important;
+}
+
+@keyframes autobrowser-ripple-expand {
+  0% {
+    transform: translate(-50%, -50%) scale(0.2);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(3.5);
+    opacity: 0;
+  }
+}
+
+/* Live Agent HUD Banner on Host Page */
+#autobrowser-action-hud {
+  position: fixed !important;
+  top: 18px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  z-index: 2147483642 !important;
+  background: rgba(15, 23, 42, 0.92) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(99, 102, 241, 0.4) !important;
+  color: #f8fafc !important;
+  padding: 8px 18px !important;
+  border-radius: 30px !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 15px rgba(99, 102, 241, 0.25) !important;
+  pointer-events: none !important;
+  animation: autobrowser-hud-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+@keyframes autobrowser-hud-in {
+  from {
+    transform: translate(-50%, -20px);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+.autobrowser-hud-dot {
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 50% !important;
+  background: #06b6d4 !important;
+  box-shadow: 0 0 8px #06b6d4 !important;
+  animation: autobrowser-pulse-dot 1s infinite alternate !important;
+}
+
+@keyframes autobrowser-pulse-dot {
+  0% { transform: scale(0.8); opacity: 0.7; }
+  100% { transform: scale(1.3); opacity: 1; }
+}
+
+/* ==========================================================================
+   PlutoAI Active Working Screen Glow Frame
+   Glows dynamically around the entire viewport while the agent is running tasks
+   ========================================================================== */
+#plutoai-active-glow-frame {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  pointer-events: none !important;
+  z-index: 2147483638 !important;
+  box-sizing: border-box !important;
+  border: 3.5px solid #38bdf8 !important;
+  box-shadow: inset 0 0 25px rgba(6, 182, 212, 0.45), inset 0 0 50px rgba(56, 189, 248, 0.25), 0 0 30px rgba(6, 182, 212, 0.5) !important;
+  animation: plutoai-screen-glow-pulse 2s infinite ease-in-out !important;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  opacity: 1 !important;
+}
+
+#plutoai-active-glow-frame::after {
+  content: '⚡ PLUTO AI WORKING' !important;
+  position: absolute !important;
+  top: 14px !important;
+  right: 20px !important;
+  background: rgba(15, 23, 42, 0.94) !important;
+  color: #38bdf8 !important;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  letter-spacing: 1px !important;
+  padding: 4px 12px !important;
+  border-radius: 6px !important;
+  border: 1.5px solid #38bdf8 !important;
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.6) !important;
+  animation: plutoai-badge-pulse 1.5s infinite alternate !important;
+}
+
+@keyframes plutoai-screen-glow-pulse {
+  0% {
+    box-shadow: inset 0 0 18px rgba(6, 182, 212, 0.35), inset 0 0 35px rgba(56, 189, 248, 0.2), 0 0 20px rgba(6, 182, 212, 0.4);
+    border-color: #06b6d4;
+  }
+  50% {
+    box-shadow: inset 0 0 35px rgba(6, 182, 212, 0.7), inset 0 0 70px rgba(99, 102, 241, 0.4), 0 0 45px rgba(6, 182, 212, 0.7);
+    border-color: #818cf8;
+  }
+  100% {
+    box-shadow: inset 0 0 18px rgba(6, 182, 212, 0.35), inset 0 0 35px rgba(56, 189, 248, 0.2), 0 0 20px rgba(6, 182, 212, 0.4);
+    border-color: #06b6d4;
+  }
+}
+
+@keyframes plutoai-badge-pulse {
+  0% { opacity: 0.85; transform: scale(0.97); }
+  100% { opacity: 1; transform: scale(1.03); box-shadow: 0 0 18px rgba(56, 189, 248, 0.9); }
+}

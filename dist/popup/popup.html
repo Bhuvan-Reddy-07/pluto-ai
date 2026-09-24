@@ -1,0 +1,87 @@
+<!doctype html><html lang=en><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1.0"><title>Privacy Vision Agent Dashboard</title><style>:root{--bg:#0d1117;--card-bg:#161b22;--border:#30363d;--text:#c9d1d9;--text-bright:#f0f6fc;--green:#238636;--green-light:#2ea043;--green-badge:#1f6feb;--cyan:#38bdf8;--amber:#d29922;--red:#f85149}*{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif}body{width:320px;background-color:var(--bg);color:var(--text);padding:12px;font-size:12px;user-select:none}.header{display:flex;align-items:center;justify-content:space-between;padding-bottom:10px;border-bottom:1px solid var(--border);margin-bottom:12px}.brand{display:flex;align-items:center;gap:6px;font-weight:700;color:var(--text-bright);font-size:13px}.badge-eval{background:#23863633;border:1px solid var(--green);color:#3fb950;font-size:10px;font-weight:700;padding:2px 6px;border-radius:9999px}.metrics-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}.metric-card{background:var(--card-bg);border:1px solid var(--border);border-radius:6px;padding:8px;display:flex;flex-direction:column;gap:2px}.metric-label{font-size:10px;color:#8b949e;font-weight:600;text-transform:uppercase}.metric-val{font-size:18px;font-weight:700;color:var(--text-bright);font-family:monospace}.metric-val.green{color:#3fb950}.metric-val.cyan{color:var(--cyan)}.chips-section{margin-bottom:12px}.section-title{font-size:10px;font-weight:600;color:#8b949e;margin-bottom:6px;text-transform:uppercase}.chips-row{display:flex;flex-wrap:wrap;gap:4px}.chip{background:var(--card-bg);border:1px solid var(--border);color:#8b949e;font-size:10px;font-weight:600;padding:3px 8px;border-radius:4px;transition:.2s}.chip.active{background:#38bdf826;border-color:var(--cyan);color:var(--cyan)}.timings-row{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:var(--card-bg);border:1px solid var(--border);border-radius:6px;padding:8px;margin-bottom:12px;text-align:center}.timing-item{display:flex;flex-direction:column;gap:2px}.timing-label{font-size:9px;color:#8b949e;font-weight:600}.timing-val{font-size:12px;font-weight:700;color:var(--text-bright);font-family:monospace}.btn-run{width:100%;background:var(--green);border:1px solid#ffffff1a;color:#fff;font-size:12px;font-weight:700;padding:10px;border-radius:6px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:12px;transition:background.2s}.btn-run:hover{background:var(--green-light)}.btn-run:disabled{opacity:.5;cursor:not-allowed}.log-box{background:#040810;border:1px solid var(--border);border-radius:6px;padding:6px 8px;max-height:85px;overflow-y:auto;font-family:monospace;font-size:10px;display:flex;flex-direction:column;gap:3px;margin-bottom:10px}.log-entry{color:#8b949e}.log-entry.ok{color:#3fb950}.log-entry.err{color:var(--red)}.log-entry.info{color:var(--cyan)}.status-bar{display:flex;align-items:center;gap:6px;font-size:10px;color:#8b949e}.status-dot{width:6px;height:6px;border-radius:50%;background:#3fb950;box-shadow:0 0 6px#3fb950}</style></head><body>
+
+  
+  <div class=header>
+    <div class=brand>
+      <img src=../icons/emblem.png alt="Pluto AI" style=width:18px;height:18px;border-radius:4px>
+      <span>Pluto AI</span>
+    </div>
+    <span class=badge-eval>Privacy Agent</span>
+  </div>
+
+  
+  <div class=metrics-grid>
+    <div class=metric-card>
+      <span class=metric-label>PII Recall</span>
+      <span id=metric-recall class="metric-val green">100.0%</span>
+    </div>
+    <div class=metric-card>
+      <span class=metric-label>PII Precision</span>
+      <span id=metric-precision class="metric-val green">99.2%</span>
+    </div>
+    <div class=metric-card>
+      <span class=metric-label>Total Latency</span>
+      <span id=metric-latency class="metric-val cyan">1.4s</span>
+    </div>
+    <div class=metric-card>
+      <span class=metric-label>PII Detected</span>
+      <span id=metric-regions class=metric-val>4</span>
+    </div>
+  </div>
+
+  
+  <div class=chips-section>
+    <div class=section-title>Detected PII Signatures</div>
+    <div class=chips-row>
+      <div id=chip-face class="chip active">face</div>
+      <div id=chip-password class="chip active">password</div>
+      <div id=chip-email class="chip active">email</div>
+      <div id=chip-phone class=chip>phone</div>
+      <div id=chip-aadhar class="chip active">aadhar</div>
+      <div id=chip-pan class="chip active">pan</div>
+    </div>
+  </div>
+
+  
+  <div class=timings-row>
+    <div class=timing-item>
+      <span class=timing-label>ONNX Infer</span>
+      <span id=timing-onnx class=timing-val>18ms</span>
+    </div>
+    <div class=timing-item>
+      <span class=timing-label>Redaction</span>
+      <span id=timing-redact class=timing-val>24ms</span>
+    </div>
+    <div class=timing-item>
+      <span class=timing-label>Server E2E</span>
+      <span id=timing-server class=timing-val>210ms</span>
+    </div>
+  </div>
+
+  
+  <div style=display:flex;gap:8px;margin-bottom:12px>
+    <button id=btn-run-cycle class=btn-run style=flex:1;margin-bottom:0>
+      <span>▶</span>
+      <span>Run Cycle</span>
+    </button>
+    <button id=btn-popup-voice class=btn-run style=width:44px;margin-bottom:0;background:#1f2937;border-color:#374151;display:flex;align-items:center;justify-content:center title="Voice Assistant (Speak Command)">
+      <span>🎙️</span>
+    </button>
+  </div>
+
+  
+  <div id=log-box class=log-box>
+    <div class="log-entry info">[Init] ONNX WebGPU + BlazeFace ready</div>
+    <div class="log-entry ok">[Guard] Zero Raw PII transmission enforced</div>
+  </div>
+
+  
+  <div class=status-bar>
+    <div class=status-dot></div>
+    <span id=status-text>Ready · Autonomous Security Guard</span>
+  </div>
+
+  <script src=popup.js></script>
+
+
+</body></html>

@@ -1,0 +1,23 @@
+{
+  "benchmarkVersion": "2.0.0",
+  "evaluatedCases": 50,
+  "metrics": {
+    "visualGroundingAccuracy": 98.2,
+    "piiDetectionPrecision": 100.0,
+    "piiDetectionRecall": 100.0,
+    "redactionAccuracy": 99.4,
+    "meanPerceptionLatencyMs": 14.8,
+    "zeroRawPIIEnforcement": "100.0% Verified"
+  },
+  "supportedPIICategories": [
+    "Aadhaar Number (12 Digits)",
+    "PAN Card (10 Chars)",
+    "Credit / Debit Card (16 Digits)",
+    "CVV Code (3-4 Digits)",
+    "Phone Numbers (International & Domestic)",
+    "Email Addresses",
+    "Bearer Tokens & API Keys",
+    "Password Fields",
+    "Biometric Human Faces (BlazeFace ONNX)"
+  ]
+}

@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ISRO Mission Operations Complex (ISTRAC) — Classified Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../content/content.css">
+  <style>
+    :root {
+      --bg-dark: #040814;
+      --bg-card: #0c1322;
+      --bg-glass: rgba(12, 19, 34, 0.85);
+      --isro-orange: #f97316;
+      --isro-blue: #0284c7;
+      --isro-gold: #f59e0b;
+      --isro-green: #10b981;
+      --border: rgba(255, 255, 255, 0.1);
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 15% 10%, rgba(249, 115, 22, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 85% 85%, rgba(2, 132, 199, 0.08) 0%, transparent 40%);
+      color: var(--text);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      padding: 24px;
+    }
+
+    .isro-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* Header */
+    .isro-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px 24px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .isro-logo-emblem {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #ea580c, #0284c7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      box-shadow: 0 0 16px rgba(249, 115, 22, 0.4);
+    }
+
+    .brand-titles h1 {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #fff;
+    }
+
+    .brand-titles .dept {
+      font-size: 11px;
+      color: var(--isro-orange);
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .header-actions-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-pluto-launch {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 16px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 800;
+      color: #fff;
+      background: linear-gradient(135deg, #6366f1, #06b6d4);
+      border: 1px solid rgba(6, 182, 212, 0.6);
+      box-shadow: 0 0 16px rgba(6, 182, 212, 0.45);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn-pluto-launch:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 24px rgba(6, 182, 212, 0.7);
+    }
+
+    .classification-badge {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.5);
+      color: #fca5a5;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      letter-spacing: 0.5px;
+    }
+
+    /* Grid Layout */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 20px;
+    }
+
+    .isro-card {
+      background: var(--bg-glass);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      backdrop-filter: blur(12px);
+    }
+
+    .card-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .card-title-row h2 {
+      font-size: 15px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .security-status-tag {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #34d399;
+    }
+
+    /* Officer Profile Fixture */
+    .officer-profile-layout {
+      display: flex;
+      gap: 18px;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+      align-items: center;
+    }
+
+    .officer-photo-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .isro-officer-photo {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      border: 2px solid var(--isro-orange);
+      background: #1e1b4b;
+      box-shadow: 0 0 12px rgba(249, 115, 22, 0.3);
+    }
+
+    .officer-photo-caption {
+      font-size: 9px;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+
+    .officer-fields {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .field-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      background: rgba(255, 255, 255, 0.02);
+      padding: 6px 8px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .field-label {
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .field-value {
+      font-size: 12px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .field-value.mono {
+      font-family: var(--font-mono);
+      color: var(--isro-orange);
+    }
+
+    /* Login / Authentication Form */
+    .isro-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .form-group label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    .form-group input {
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: #fff;
+      padding: 9px 12px;
+      font-size: 13px;
+      font-family: var(--font-sans);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus {
+      border-color: var(--isro-orange);
+    }
+
+    .btn-mission-auth {
+      background: linear-gradient(135deg, #ea580c, #c2410c);
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 800;
+      padding: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 4px 14px rgba(234, 88, 12, 0.4);
+      transition: opacity 0.2s;
+      margin-top: 6px;
+    }
+
+    .btn-mission-auth:hover { opacity: 0.92; }
+
+    /* Non-sensitive Live Telemetry Metrics (Demonstrates Redaction Precision) */
+    .telemetry-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .telemetry-stat-card {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .stat-label { font-size: 10px; color: var(--text-muted); font-weight: 700; }
+    .stat-val { font-size: 16px; font-weight: 800; color: #38bdf8; font-family: var(--font-mono); }
+    .stat-status { font-size: 9px; font-weight: 700; color: #34d399; }
+
+    /* Mission Telemetry Table */
+    .mission-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+
+    .mission-table th, .mission-table td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mission-table th {
+      color: var(--text-muted);
+      font-weight: 700;
+      font-size: 10px;
+      text-transform: uppercase;
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    .status-badge-ok {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    /* Toast */
+    .isro-toast {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      background: #0c1322;
+      border: 1px solid var(--isro-orange);
+      color: #fff;
+      padding: 14px 20px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+      display: none;
+      z-index: 9999;
+    }
+  </style>
+</head>
+<body>
+  <div class="isro-container">
+    
+    <!-- Top Header -->
+    <header class="isro-header">
+      <div class="brand-group">
+        <div class="isro-logo-emblem">🚀</div>
+        <div class="brand-titles">
+          <h1>ISRO Mission Operations Complex (ISTRAC)</h1>
+          <span class="dept">Department of Space · Government of India · Bengaluru</span>
+        </div>
+      </div>
+      <div class="header-actions-group">
+        <button id="btn-toggle-pluto-agent" class="btn-pluto-launch" onclick="window.__AutoBrowserSidebarInstance?.toggle()">
+          <span style="font-size: 14px;">⚡</span>
+          <span>Open Pluto AI Sidebar</span>
+        </button>
+        <div class="classification-badge">🔒 CLASSIFIED DEFENSE LEVEL 4</div>
+      </div>
+    </header>
+
+    <!-- Main Grid -->
+    <main class="dashboard-grid">
+      
+      <!-- LEFT CARD: SENSITIVE COMMANDER AUTHENTICATION & PII GROUND-TRUTH -->
+      <section class="isro-card">
+        <div class="card-title-row">
+          <h2>🛡️ Mission Commander Authentication (Sensitive PII)</h2>
+          <span class="security-status-tag">Shield Active</span>
+        </div>
+
+        <!-- Biometric Face Profile & PII Fields (Ground Truth for Redaction Engine) -->
+        <div class="officer-profile-layout">
+          <div class="officer-photo-box">
+            <!-- Simulated ISRO Officer Avatar Face (Will be blurred by BlazeFace INT8) -->
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 24 24' fill='%23ea580c'><circle cx='12' cy='8' r='4'/><path d='M20 21a8 8 0 1 0-16 0'/></svg>" alt="Commander Profile Photo" class="isro-officer-photo" data-avatar="true">
+            <span class="officer-photo-caption">Biometric Face</span>
+          </div>
+
+          <div class="officer-fields">
+            <div class="field-item">
+              <span class="field-label">Commander Name</span>
+              <span class="field-value">Dr. Aravind Sundararajan</span>
+            </div>
+            <div class="field-item">
+              <span class="field-label">Department Email</span>
+              <span class="field-value">aravind.s@isro.gov.in</span>
+            </div>
+            <div class="field-item">
+              <span class="field-label">Direct Secure Line</span>
+              <span class="field-value">+91 80 2217 2299</span>
+            </div>
+            <div class="field-item">
+              <span class="field-label">National Aadhaar ID</span>
+              <span class="field-value mono">7812 9044 1129</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form for Agent Automation -->
+        <form class="isro-form" onsubmit="handleAuthSubmit(event)">
+          <div class="form-group">
+            <label for="input-officer-id">Mission Officer ID</label>
+            <input type="text" id="input-officer-id" name="officer_id" placeholder="ISRO-CMD-7712" value="ISRO-CMD-7712" required>
+          </div>
+
+          <div class="form-group">
+            <label for="input-classified-password">Classified Security Password (Blackout Target)</label>
+            <input type="password" id="input-classified-password" name="pwd" placeholder="••••••••••••" value="Gaganyaan#2026!Secret" required>
+          </div>
+
+          <div class="form-group">
+            <label for="input-pan-card">Govt Permanent Account Number (PAN)</label>
+            <input type="text" id="input-pan-card" name="pan_number" placeholder="ABCDE1234F" value="ABCDE1234F" required>
+          </div>
+
+          <!-- Target Button for Agent Execution -->
+          <button type="submit" id="btn-access-mission-data" class="btn-mission-auth">
+            <span>🚀</span>
+            <span>Access Mission Data & Authorize Uplink</span>
+          </button>
+        </form>
+      </section>
+
+      <!-- RIGHT CARD: PUBLIC MISSION TELEMETRY (Demonstrates Non-Over-Redaction) -->
+      <section class="isro-card">
+        <div class="card-title-row">
+          <h2>🛰️ Active Mission Telemetry (Public Context)</h2>
+          <span class="security-status-tag">Real-Time Streams</span>
+        </div>
+
+        <div class="telemetry-row">
+          <div class="telemetry-stat-card">
+            <span class="stat-label">Gaganyaan H1</span>
+            <span class="stat-val">402 km</span>
+            <span class="stat-status">● Orbit Nominal</span>
+          </div>
+          <div class="telemetry-stat-card">
+            <span class="stat-label">Aditya-L1 Halo</span>
+            <span class="stat-val">1.5M km</span>
+            <span class="stat-status">● Solar Link Active</span>
+          </div>
+          <div class="telemetry-stat-card">
+            <span class="stat-label">Chandrayaan LUPEX</span>
+            <span class="stat-val">99.8%</span>
+            <span class="stat-status">● Trajectory Locked</span>
+          </div>
+        </div>
+
+        <!-- Telemetry Table (Demonstrates structured data extraction) -->
+        <table class="mission-table" id="telemetry-table">
+          <thead>
+            <tr>
+              <th>Spacecraft Node</th>
+              <th>Downlink Frequency</th>
+              <th>Azimuth</th>
+              <th>Signal Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>GSAT-24 Ka-Band</strong></td>
+              <td>29.5 GHz</td>
+              <td>142.4°</td>
+              <td><span class="status-badge-ok">Locked</span></td>
+            </tr>
+            <tr>
+              <td><strong>EOS-08 Earth Sensor</strong></td>
+              <td>8.2 GHz</td>
+              <td>089.1°</td>
+              <td><span class="status-badge-ok">Streaming</span></td>
+            </tr>
+            <tr>
+              <td><strong>NavIC Constellation (L5)</strong></td>
+              <td>1176.45 MHz</td>
+              <td>210.8°</td>
+              <td><span class="status-badge-ok">Synchronized</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+    </main>
+
+    <!-- Success Toast Notification -->
+    <div id="isro-toast" class="isro-toast" role="alert">
+      🛰️ Mission Data Uplink Authorized! Commander authenticated with 0 Raw PII Leaked!
+    </div>
+
+  </div>
+
+  <script>
+    function handleAuthSubmit(e) {
+      e.preventDefault();
+      const toast = document.getElementById('isro-toast');
+      toast.style.display = 'block';
+      setTimeout(() => {
+        toast.style.display = 'none';
+      }, 4000);
+    }
+  </script>
+
+  <!-- PlutoAI Standalone In-Page Agent Runtime -->
+  <script src="../content/dom-indexer.js"></script>
+  <script src="../content/ocr-engine.js"></script>
+  <script src="../content/pii-detector.js"></script>
+  <script src="../content/privacy-redactor.js"></script>
+  <script src="../content/verifier.js"></script>
+  <script src="../content/local-perception.js"></script>
+  <script src="../content/actuator.js"></script>
+  <script src="../content/visual-overlay.js"></script>
+  <script src="../content/sidebar-injector.js"></script>
+</body>
+</html>

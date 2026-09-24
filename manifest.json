@@ -1,0 +1,74 @@
+{
+  "manifest_version": 3,
+  "name": "PlutoAI - Privacy-First Autonomous Web Agent",
+  "version": "2.0.0",
+  "description": "PlutoAI: On-device visual perception & sensitive-data protection for lightweight autonomous browser agents .",
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "storage",
+    "scripting",
+    "debugger",
+    "unlimitedStorage",
+    "sidePanel",
+    "webNavigation"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background/background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "Toggle PlutoAI Privacy-First Sidebar",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "side_panel": {
+    "default_path": "sidebar/sidebar.html"
+  },
+  "options_page": "options/options.html",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": [
+        "content/dom-indexer.js",
+        "content/ocr-engine.js",
+        "content/onnx-runner.js",
+        "content/pii-detector.js",
+        "content/privacy-redactor.js",
+        "content/verifier.js",
+        "content/local-perception.js",
+        "content/actuator.js",
+        "content/visual-overlay.js",
+        "content/sidebar-injector.js",
+        "content/content.js"
+      ],
+      "css": ["content/content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "sidebar/*",
+        "icons/*",
+        "content/*",
+        "demo/*",
+        "tests/*"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

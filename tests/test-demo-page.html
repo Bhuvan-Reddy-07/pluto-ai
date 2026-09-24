@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PlutoAI - Privacy & Evaluation Arena</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="playground.css">
+</head>
+<body>
+  <div class="playground-layout">
+    
+    <!-- Top Header -->
+    <header class="navbar">
+      <div class="brand">
+        <div class="logo-box">🛡️</div>
+        <div>
+          <h1>PlutoAI Privacy Evaluation Arena</h1>
+          <span class="sub">On-Device Visual Perception & Sensitive Data Shield</span>
+        </div>
+      </div>
+      <div class="nav-search">
+        <input type="search" id="global-search-input" placeholder="Search catalog, records, accounts...">
+        <button id="global-search-btn" class="btn-search">Search</button>
+      </div>
+    </header>
+
+    <!-- Main Test Grid -->
+    <main class="content-grid">
+
+      <!-- SECTION 1: SENSITIVE PII PROFILE & ATTACK SIMULATOR -->
+      <section class="card-section privacy-card-highlight">
+        <div class="section-title-bar">
+          <h2>🔒 Sensitive Customer Identity Profile (Synthetic PII Ground-Truth)</h2>
+          <span class="privacy-tag">Ground-Truth Test Fixture</span>
+        </div>
+        <p class="section-note">This section contains synthetic sensitive PII to evaluate PlutoAI's multi-layer detection and zero-raw-transmission guarantee.</p>
+
+        <div class="profile-card-container">
+          <div class="avatar-box">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 24 24' fill='%236366f1'><circle cx='12' cy='8' r='4'/><path d='M20 21a8 8 0 1 0-16 0'/></svg>" alt="User Avatar" class="profile-avatar" data-avatar="true">
+            <span class="avatar-label">Biometric Face/Avatar</span>
+          </div>
+          <div class="profile-fields-grid">
+            <div class="field-box">
+              <span class="label">Customer Name:</span>
+              <span class="val" id="mock-user-name">Dr. Vikramaditya Sharma</span>
+            </div>
+            <div class="field-box">
+              <span class="label">Confidential Email:</span>
+              <span class="val" id="mock-user-email">vikram.sharma@secure-ai-health.org</span>
+            </div>
+            <div class="field-box">
+              <span class="label">Direct Phone:</span>
+              <span class="val" id="mock-user-phone">+91 98765 43210</span>
+            </div>
+            <div class="field-box">
+              <span class="label">National Aadhaar ID:</span>
+              <span class="val" id="mock-user-aadhaar">8942 1204 7712</span>
+            </div>
+            <div class="field-box">
+              <span class="label">Social Security (SSN):</span>
+              <span class="val" id="mock-user-ssn">892-12-4491</span>
+            </div>
+            <div class="field-box">
+              <span class="label">Access Auth Token:</span>
+              <span class="val mono" id="mock-user-token">bearer_pat_9981a8f9c1029e8471b</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: SENSITIVE CHECKOUT & PAYMENT FORM -->
+      <section class="card-section">
+        <div class="section-title-bar">
+          <h2>💳 Encrypted Financial Checkout & Form</h2>
+          <span class="cart-pill" id="cart-counter">Cart: 0 items</span>
+        </div>
+
+        <form id="checkout-form" class="test-form" onsubmit="handleCheckoutSubmit(event)">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="input-cardholder">Cardholder Name</label>
+              <input type="text" id="input-cardholder" name="cardholder" placeholder="Vikramaditya Sharma" autocomplete="cc-name" required>
+            </div>
+            <div class="form-field">
+              <label for="input-card-number">Credit / Debit Card Number (Luhn Validated)</label>
+              <input type="text" id="input-card-number" name="creditcard" placeholder="4532 8921 4432 9981" autocomplete="cc-number" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field half">
+              <label for="input-exp">Expiration Date</label>
+              <input type="text" id="input-exp" name="expiry" placeholder="12/28" autocomplete="cc-exp" required>
+            </div>
+            <div class="form-field half">
+              <label for="input-cvv">CVV / Security Code</label>
+              <input type="password" id="input-cvv" name="cvv" placeholder="•••" maxlength="4" autocomplete="cc-csc" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="input-billing-addr">Billing Address</label>
+              <input type="text" id="input-billing-addr" name="address" placeholder="742 Evergreen Terrace, Sector 14, New Delhi" required>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" id="btn-submit-payment" class="btn-primary">Pay Now & Complete Order</button>
+            <button type="button" class="btn-secondary" onclick="resetForm()">Reset Fields</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- SECTION 3: E-COMMERCE PRODUCT CATALOG -->
+      <section class="card-section">
+        <div class="section-title-bar">
+          <h2>🛍️ Product Catalog</h2>
+        </div>
+
+        <div class="product-grid">
+          <div class="product-card" id="prod-1">
+            <div class="product-img" style="background: linear-gradient(135deg, #1e1b4b, #312e81);">💻</div>
+            <div class="product-body">
+              <h3>QuantumBook Pro M4</h3>
+              <p class="price">$1,999.00</p>
+              <p class="desc">Next-gen neural compute laptop with 64GB unified memory.</p>
+              <div class="btn-group">
+                <button class="btn-buy" onclick="addToCart('QuantumBook Pro M4', 1999)">Add to Cart</button>
+                <button class="btn-secondary" onclick="openDetails('QuantumBook Pro M4')">Details</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card" id="prod-2">
+            <div class="product-img" style="background: linear-gradient(135deg, #064e3b, #047857);">🎧</div>
+            <div class="product-body">
+              <h3>CyberAura ANC Headphones</h3>
+              <p class="price">$349.00</p>
+              <p class="desc">Lossless spatial audio with ultra-low latency wireless sync.</p>
+              <div class="btn-group">
+                <button class="btn-buy" onclick="addToCart('CyberAura ANC Headphones', 349)">Add to Cart</button>
+                <button class="btn-secondary" onclick="openDetails('CyberAura ANC Headphones')">Details</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card" id="prod-3">
+            <div class="product-img" style="background: linear-gradient(135deg, #831843, #9d174d);">⌚</div>
+            <div class="product-body">
+              <h3>TitanSmart Chrono X</h3>
+              <p class="price">$499.00</p>
+              <p class="desc">Aerospace titanium case with bio-sensor telemetry.</p>
+              <div class="btn-group">
+                <button class="btn-buy" onclick="addToCart('TitanSmart Chrono X', 499)">Add to Cart</button>
+                <button class="btn-secondary" onclick="openDetails('TitanSmart Chrono X')">Details</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 4: CONFIDENTIAL MEDICAL & FINANCIAL RECORDS -->
+      <section class="card-section">
+        <div class="section-title-bar">
+          <h2>📊 Confidential Medical & Financial Telemetry Table</h2>
+          <button class="btn-secondary" onclick="exportTableData()">Export Table</button>
+        </div>
+
+        <div class="table-container">
+          <table class="data-table" id="market-table">
+            <thead>
+              <tr>
+                <th>Patient ID</th>
+                <th>Diagnosis & Condition</th>
+                <th>Prescription</th>
+                <th>Insurer Policy</th>
+                <th>Account Balance</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>#PT-88219</strong></td>
+                <td>Hypertension (ICD-10 I10)</td>
+                <td>Amlodipine 5mg</td>
+                <td>LIC-MED-7718</td>
+                <td>$12,450.00</td>
+                <td><span class="badge active">Active</span></td>
+              </tr>
+              <tr>
+                <td><strong>#PT-90412</strong></td>
+                <td>Type 2 Diabetes (E11.9)</td>
+                <td>Metformin 500mg</td>
+                <td>HDFC-ERGO-9912</td>
+                <td>$8,920.00</td>
+                <td><span class="badge pending">Review</span></td>
+              </tr>
+              <tr>
+                <td><strong>#PT-77104</strong></td>
+                <td>Cardiac Arrhythmia (I49.9)</td>
+                <td>Bisoprolol 2.5mg</td>
+                <td>STAR-HEALTH-4410</td>
+                <td>$45,180.00</td>
+                <td><span class="badge active">Active</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Notification Toast Area -->
+      <div id="toast-container" class="toast-container"></div>
+
+    </main>
+  </div>
+
+  <script>
+    let cart = [];
+
+    function addToCart(product, price) {
+      cart.push({ product, price, timestamp: Date.now() });
+      const counter = document.getElementById('cart-counter');
+      counter.textContent = `Cart: ${cart.length} items`;
+      counter.classList.add('pulse');
+      setTimeout(() => counter.classList.remove('pulse'), 500);
+
+      showToast(`Added "${product}" to cart! (Total: $${cart.reduce((a, b) => a + b.price, 0)})`, 'success');
+    }
+
+    function openDetails(product) {
+      showToast(`Opened specification modal for ${product}`, 'info');
+    }
+
+    function handleCheckoutSubmit(e) {
+      e.preventDefault();
+      const card = document.getElementById('input-card-number').value;
+      showToast(`💳 Payment Processed Securely! Card ended in ${card.slice(-4) || '9981'}.`, 'success');
+    }
+
+    function resetForm() {
+      document.getElementById('checkout-form').reset();
+      showToast('Form fields reset.', 'info');
+    }
+
+    function exportTableData() {
+      showToast('Exported table rows as structured JSON.', 'success');
+    }
+
+    function showToast(message, type = 'info') {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      toast.className = `toast toast-${type}`;
+      toast.setAttribute('role', 'alert');
+      toast.textContent = message;
+      container.appendChild(toast);
+
+      setTimeout(() => {
+        toast.classList.add('fade-out');
+        setTimeout(() => toast.remove(), 400);
+      }, 3500);
+    }
+  </script>
+</body>
+</html>
