@@ -39,6 +39,7 @@
       <nav class="nav-links">
         <a href="#features">Features</a>
         <a href="#privacy">Privacy Shield</a>
+        <a href="#setup-guide">Setup & API Guide</a>
         <a href="#demo">Live Sandbox</a>
         <a href="#benchmarks">Benchmarks</a>
         <a href="#faq">FAQ</a>
@@ -64,11 +65,11 @@
     <div class="hero-container">
       
       <!-- Top Pill Announcement -->
-      <div class="hero-pill-badge">
+      <a href="#setup-guide" class="hero-pill-badge" style="text-decoration: none;">
         <span class="hero-sparkle-icon">✨</span>
-        <span>Next-Gen Gemini-Style Browser Agent • 100% On-Device Privacy</span>
+        <span>Next-Gen Gemini Browser Agent • Quick Setup & Free API Guide</span>
         <span class="pill-arrow">→</span>
-      </div>
+      </a>
 
       <h1 class="hero-title">
         The Autonomous AI Agent That Browses For You.
@@ -91,11 +92,19 @@
           </div>
         </button>
 
-        <a href="#demo" class="btn-hero-secondary">
+        <a href="#setup-guide" class="btn-hero-secondary">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+          <span>Setup & API Guide</span>
+        </a>
+
+        <a href="#demo" class="btn-hero-tertiary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <polygon points="5 3 19 12 5 21 5 3"/>
           </svg>
-          <span>Try Interactive Sandbox</span>
+          <span>Sandbox</span>
         </a>
       </div>
 
@@ -565,76 +574,458 @@
     </div>
   </section>
 
-  <!-- Installation Steps Section -->
-  <section class="section-install" id="install">
-    <div class="section-container">
+  <!-- Complete Setup & API Key Guidelines Section -->
+  <section class="section-setup-guide" id="setup-guide">
+    <div class="section-container" id="install">
       <div class="section-header">
-        <span class="section-tag">3-STEP QUICK SETUP</span>
-        <h2 class="section-title">Get Started in Less Than 30 Seconds</h2>
-        <p class="section-desc">No build tools or command lines required. Click below to add Pluto AI directly to your browser.</p>
+        <span class="section-tag">COMPLETE ONBOARDING & SETUP GUIDELINES</span>
+        <h2 class="section-title">How to Install, Get an API Key & Connect Pluto AI</h2>
+        <p class="section-desc">Follow these 4 simple steps to add Pluto AI to your browser, claim a 100% free Gemini API key, load your credentials, and verify your live connection.</p>
       </div>
 
-      <div class="install-steps-row">
-        
-        <div class="install-step-card">
-          <div class="step-num">1</div>
-          <div class="step-icon">📦</div>
-          <h3>Download Package</h3>
-          <p>Click "Add to Chrome" to download the ready-to-use Pluto AI package bundle.</p>
-          <button class="btn-step-action trigger-install-modal">Download Now</button>
+      <!-- Quick Step Navigation Pills -->
+      <div class="setup-nav-pills">
+        <a href="#step-1-install" class="setup-pill active" data-step="1">
+          <span class="pill-number">1</span>
+          <span class="pill-text">Install Extension</span>
+        </a>
+        <a href="#step-2-apikey" class="setup-pill" data-step="2">
+          <span class="pill-number">2</span>
+          <span class="pill-text">Get Free API Key</span>
+        </a>
+        <a href="#step-3-loadkey" class="setup-pill" data-step="3">
+          <span class="pill-number">3</span>
+          <span class="pill-text">Load into Pluto AI</span>
+        </a>
+        <a href="#step-4-test" class="setup-pill" data-step="4">
+          <span class="pill-number">4</span>
+          <span class="pill-text">Test Connection</span>
+        </a>
+      </div>
+
+      <!-- Grid of 4 Detailed Setup Cards -->
+      <div class="setup-cards-grid">
+
+        <!-- STEP 1: INSTALL EXTENSION -->
+        <div class="setup-card" id="step-1-install">
+          <div class="setup-card-header">
+            <div class="setup-step-badge">STEP 1</div>
+            <div class="setup-card-title-group">
+              <span class="setup-card-emoji">📦</span>
+              <div>
+                <h3>Download & Load Pluto AI in Your Browser</h3>
+                <span class="setup-time-est">⏱️ Takes ~30 seconds • No build tools required</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="setup-card-body">
+            <ol class="setup-instructions-list">
+              <li>
+                <strong>Download the Extension Package:</strong>
+                <p>Click below to download the compiled Pluto AI zip package.</p>
+                <div class="setup-action-row">
+                  <button class="btn-step-action trigger-install-modal">
+                    <span>⬇️ Download pluto-ai-v2.0.0.zip (1.67 MB)</span>
+                  </button>
+                  <a href="downloads/pluto-ai-v2.0.0.zip" download="pluto-ai-v2.0.0.zip" class="btn-step-outline">Direct ZIP Link</a>
+                </div>
+              </li>
+              <li>
+                <strong>Extract the ZIP File:</strong>
+                <p>Locate <code>pluto-ai-v2.0.0.zip</code> in your Downloads folder, right-click it, and select <strong>"Extract All..."</strong> (or unzip to a folder you will keep).</p>
+              </li>
+              <li>
+                <strong>Open Your Browser's Extensions Page:</strong>
+                <p>Paste the appropriate URL into your browser address bar:</p>
+                <div class="browser-urls-grid">
+                  <div class="browser-url-item">
+                    <span class="browser-name">Chrome</span>
+                    <code>chrome://extensions</code>
+                    <button class="btn-copy-mini" data-copy="chrome://extensions">Copy</button>
+                  </div>
+                  <div class="browser-url-item">
+                    <span class="browser-name">Edge</span>
+                    <code>edge://extensions</code>
+                    <button class="btn-copy-mini" data-copy="edge://extensions">Copy</button>
+                  </div>
+                  <div class="browser-url-item">
+                    <span class="browser-name">Brave</span>
+                    <code>brave://extensions</code>
+                    <button class="btn-copy-mini" data-copy="brave://extensions">Copy</button>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <strong>Enable Developer Mode:</strong>
+                <p>Look in the top-right corner of the Extensions page and switch the <strong>Developer mode</strong> toggle to <strong>ON</strong>.</p>
+              </li>
+              <li>
+                <strong>Load Unpacked Extension:</strong>
+                <p>Click the <strong>"Load unpacked"</strong> button in the top-left menu. Select the extracted <code>Pluto AI</code> folder. The extension appears immediately!</p>
+              </li>
+              <li>
+                <strong>Pin & Open Side Panel:</strong>
+                <p>Click the puzzle icon 🧩 in your browser toolbar, pin <strong>Pluto AI</strong> 📌, and click the Pluto emblem to open the side panel.</p>
+              </li>
+            </ol>
+          </div>
         </div>
 
-        <div class="install-step-card">
-          <div class="step-num">2</div>
-          <div class="step-icon">⚙️</div>
-          <h3>Open Extensions</h3>
-          <p>Navigate to <code>chrome://extensions</code> in your browser and enable <strong>Developer mode</strong> (top right toggle).</p>
-          <button class="btn-step-action" id="btn-copy-chrome-url">Copy chrome://extensions</button>
+        <!-- STEP 2: GET AN API KEY -->
+        <div class="setup-card featured-step" id="step-2-apikey">
+          <div class="setup-card-header">
+            <div class="setup-step-badge badge-green">STEP 2</div>
+            <div class="setup-card-title-group">
+              <span class="setup-card-emoji">🔑</span>
+              <div>
+                <h3>Get an API Key (100% Free Gemini Key)</h3>
+                <span class="setup-time-est highlight-green">✨ Free Forever Tier • Up to 500 requests/day • No Credit Card Required</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="setup-card-body">
+            
+            <!-- Google Gemini Featured Callout Box -->
+            <div class="provider-callout-box">
+              <div class="provider-box-header">
+                <div class="provider-brand">
+                  <span class="provider-logo-gemini">✦</span>
+                  <strong>Google Gemini 2.5 Flash Lite (Recommended)</strong>
+                </div>
+                <span class="badge-free-forever">$0.00 / FREE TIER</span>
+              </div>
+              <p class="provider-desc">Google AI Studio provides a free tier with high speed, large context windows, and zero costs. Follow these 4 quick clicks to generate your key:</p>
+
+              <div class="gemini-steps-timeline">
+                <div class="timeline-step-item">
+                  <span class="step-circle">A</span>
+                  <div>
+                    <strong>Visit Google AI Studio:</strong>
+                    <span>Go to the official developer key dashboard at <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener">aistudio.google.com/app/apikey</a>.</span>
+                  </div>
+                </div>
+                <div class="timeline-step-item">
+                  <span class="step-circle">B</span>
+                  <div>
+                    <strong>Sign In with Any Google Account:</strong>
+                    <span>Use your existing personal or workspace Google account. No credit card or billing details are required.</span>
+                  </div>
+                </div>
+                <div class="timeline-step-item">
+                  <span class="step-circle">C</span>
+                  <div>
+                    <strong>Click "Create API key":</strong>
+                    <span>Click the blue button in the top left, select <em>"Create key in new project"</em>, and accept the free tier terms.</span>
+                  </div>
+                </div>
+                <div class="timeline-step-item">
+                  <span class="step-circle">D</span>
+                  <div>
+                    <strong>Copy Your Secret Key:</strong>
+                    <span>Click the copy icon next to your new key (format: <code>AIzaSy...</code>). Keep this tab open or save it to your clipboard.</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="provider-action-group">
+                <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener" class="btn-primary btn-provider-direct">
+                  <span>🔑 Open Google AI Studio (Get Free Key) ↗</span>
+                </a>
+                <button class="btn-step-outline btn-copy-link" data-copy="https://aistudio.google.com/app/apikey">
+                  <span>📋 Copy AI Studio URL</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Alternative Providers Options -->
+            <div class="alt-providers-section">
+              <span class="alt-providers-title">Or Bring Your Own Key from Supported Providers:</span>
+              <div class="alt-providers-grid">
+                
+                <div class="alt-provider-item">
+                  <div class="alt-head">
+                    <strong>OpenAI</strong>
+                    <span class="tag-model">GPT-4o / GPT-4o-mini</span>
+                  </div>
+                  <p>Get a key at <code>platform.openai.com/api-keys</code> (format: <code>sk-...</code>).</p>
+                  <a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener" class="link-provider">OpenAI Console ↗</a>
+                </div>
+
+                <div class="alt-provider-item">
+                  <div class="alt-head">
+                    <strong>Anthropic Claude</strong>
+                    <span class="tag-model">Claude 3.5 Sonnet</span>
+                  </div>
+                  <p>Get a key at <code>console.anthropic.com/settings/keys</code> (format: <code>sk-ant-...</code>).</p>
+                  <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener" class="link-provider">Anthropic Console ↗</a>
+                </div>
+
+                <div class="alt-provider-item">
+                  <div class="alt-head">
+                    <strong>Groq Vision</strong>
+                    <span class="tag-model">Llama 3.3 70B</span>
+                  </div>
+                  <p>Ultra-fast open models at <code>console.groq.com/keys</code> (format: <code>gsk_...</code>).</p>
+                  <a href="https://console.groq.com/keys" target="_blank" rel="noopener" class="link-provider">Groq Console ↗</a>
+                </div>
+
+                <div class="alt-provider-item">
+                  <div class="alt-head">
+                    <strong>DeepSeek / Mistral</strong>
+                    <span class="tag-model">DeepSeek V3 / R1</span>
+                  </div>
+                  <p>Compatible with standard OpenAI-compatible endpoints.</p>
+                  <a href="https://platform.deepseek.com" target="_blank" rel="noopener" class="link-provider">DeepSeek Platform ↗</a>
+                </div>
+
+                <div class="alt-provider-item highlight-offline">
+                  <div class="alt-head">
+                    <strong>🛡️ 100% Offline Mode</strong>
+                    <span class="tag-model tag-free">Zero Keys Required</span>
+                  </div>
+                  <p>Want to test Pluto AI without signing up? Select <strong>Demo Simulator</strong> or <strong>Offline Privacy Mode</strong> in Settings to test local workflows immediately with zero external API calls!</p>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
         </div>
 
-        <div class="install-step-card">
-          <div class="step-num">3</div>
-          <div class="step-icon">🚀</div>
-          <h3>Load Unpacked</h3>
-          <p>Click <strong>"Load unpacked"</strong> and select the extracted Pluto AI folder. Pluto AI appears immediately in your side panel!</p>
-          <span class="step-badge-ready">Ready to Automate</span>
+        <!-- STEP 3: LOAD API KEY INTO EXTENSION -->
+        <div class="setup-card" id="step-3-loadkey">
+          <div class="setup-card-header">
+            <div class="setup-step-badge badge-blue">STEP 3</div>
+            <div class="setup-card-title-group">
+              <span class="setup-card-emoji">⚙️</span>
+              <div>
+                <h3>Load Your API Key into Pluto AI</h3>
+                <span class="setup-time-est">🔒 100% On-Device AES-GCM-256 Encryption • Zero Egress</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="setup-card-body">
+            <ol class="setup-instructions-list">
+              <li>
+                <strong>Open the Pluto AI Side Panel:</strong>
+                <p>Click the Pluto AI emblem in your browser toolbar to reveal the side panel.</p>
+              </li>
+              <li>
+                <strong>Click the Settings Icon (⚙️):</strong>
+                <p>Look at the top-right action bar of the sidebar and click the <strong>Settings (⚙️)</strong> button (or click the Provider badge in the bottom Gemini input bar).</p>
+              </li>
+              <li>
+                <strong>Select Your Active Provider:</strong>
+                <p>Under <strong>"Active Provider"</strong>, pick <code>Google Gemini (Recommended)</code>, <code>OpenAI</code>, <code>Anthropic Claude</code>, or another provider of your choice.</p>
+              </li>
+              <li>
+                <strong>Paste Your API Key:</strong>
+                <p>Paste the copied secret key into the designated input field (e.g. <code>Google Gemini API Key</code>). The key will be masked for privacy.</p>
+              </li>
+              <li>
+                <strong>Review On-Device Privacy Guarantee:</strong>
+                <div class="security-guarantee-note">
+                  <span class="shield-mini">🛡️</span>
+                  <span><strong>Zero Server Storage:</strong> Your key is encrypted directly inside your browser sandbox using AES-GCM-256 and stored exclusively in <code>chrome.storage.local</code>. Pluto AI has no central telemetry backend and never sees, logs, or exports your API key.</span>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- STEP 4: TEST CONNECTION & VERIFY -->
+        <div class="setup-card" id="step-4-test">
+          <div class="setup-card-header">
+            <div class="setup-step-badge badge-purple">STEP 4</div>
+            <div class="setup-card-title-group">
+              <span class="setup-card-emoji">⚡</span>
+              <div>
+                <h3>Test Connection & Start Automating</h3>
+                <span class="setup-time-est">✅ Instant Handshake Verification in ~200ms</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="setup-card-body">
+            <ol class="setup-instructions-list">
+              <li>
+                <strong>Click "⚡ Test Key":</strong>
+                <p>In the Settings modal, click the <strong>"⚡ Test Key"</strong> button located at the bottom next to "Save Settings".</p>
+              </li>
+              <li>
+                <strong>Observe the Live Response:</strong>
+                <div class="test-states-preview">
+                  <div class="test-state-box state-success">
+                    <span class="state-icon">🟢</span>
+                    <div>
+                      <strong>Connected (200 OK) — Google Gemini Flash Ready</strong>
+                      <span>Verified handshake in 184ms • Quota active • Model responding</span>
+                    </div>
+                  </div>
+                  <div class="test-state-box state-error">
+                    <span class="state-icon">🔴</span>
+                    <div>
+                      <strong>Key Missing or 401 Unauthorized</strong>
+                      <span>Check that your key has no accidental leading/trailing spaces or that quota is enabled in AI Studio.</span>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <strong>Save Your Settings:</strong>
+                <p>Click the blue <strong>"Save Settings"</strong> button. The settings modal closes and the top status pill updates to <code>🟢 IDLE</code>.</p>
+              </li>
+              <li>
+                <strong>Run Your First Browser Task!</strong>
+                <p>You're all set! Click any starter prompt card (e.g., <em>"Help me make a decision"</em>, <em>"Extract table data"</em>, <em>"Scan for sensitive PII"</em>) or type any goal in the bottom Gemini input bar. Pluto AI will decompose your task, navigate elements, and protect your privacy on-device.</p>
+              </li>
+            </ol>
+          </div>
         </div>
 
       </div>
 
+      <!-- Live Interactive "Test Key Sandbox" Demonstration Widget -->
+      <div class="interactive-test-simulator-box">
+        <div class="sim-box-header">
+          <div class="sim-badge-title">
+            <span class="sim-pulse-dot"></span>
+            <span>TRY IT LIVE: Test Connection Simulator</span>
+          </div>
+          <span class="sim-helper-text">Experience how Pluto AI tests and validates your API credentials in real time.</span>
+        </div>
+
+        <div class="sim-tester-controls">
+          <div class="sim-form-group">
+            <label>AI Provider</label>
+            <select id="guide-sim-provider" class="sim-select">
+              <option value="gemini">Google Gemini (Free Flash Tier)</option>
+              <option value="openai">OpenAI (GPT-4o)</option>
+              <option value="claude">Anthropic Claude (3.5 Sonnet)</option>
+              <option value="groq">Groq Vision (Llama 3.3)</option>
+              <option value="offline">Offline Privacy Mode (No Key Needed)</option>
+            </select>
+          </div>
+
+          <div class="sim-form-group flex-grow">
+            <label>API Key</label>
+            <div class="sim-input-wrapper">
+              <input type="password" id="guide-sim-key" class="sim-input" placeholder="Paste your API key here (e.g. AIzaSy...)" value="AIzaSyDemo-GeminiKey-Valid2026">
+              <button id="btn-toggle-key-visibility" class="btn-vis-toggle" title="Show/Hide Key">👁️</button>
+              <button id="btn-sample-key" class="btn-sample-key" title="Load sample test key">Paste Sample</button>
+            </div>
+          </div>
+
+          <div class="sim-btn-wrapper">
+            <button id="guide-btn-test-connection" class="btn-primary btn-sim-test">
+              <span>⚡ Test Connection</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Simulated Handshake Output Banner -->
+        <div id="guide-sim-result" class="sim-result-banner success">
+          <div class="sim-result-icon">🟢</div>
+          <div class="sim-result-content">
+            <strong id="guide-sim-status-title">Connected (200 OK) — Google Gemini Flash Verified!</strong>
+            <p id="guide-sim-status-desc">Handshake validated in 194ms. Quota active: 500 requests/day remaining. Zero PII egress firewall armed.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Action CTA Banner -->
       <div class="install-cta-banner">
         <div class="banner-text">
-          <h3>Ready to experience the privacy-first future of web browsing?</h3>
-          <p>Add Pluto AI to your browser today. Free forever for on-device workflows.</p>
+          <h3>Ready to experience autonomous, privacy-first web browsing?</h3>
+          <p>Download Pluto AI, grab your free Gemini key, and automate tasks with 100% on-device PII protection.</p>
         </div>
-        <button class="btn-primary btn-banner-cta trigger-install-modal">
-          <svg class="btn-chrome-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 0C8.21 0 4.831 1.757 2.632 4.501l3.953 6.848A6 6 0 0 1 12 6h9.542A12 12 0 0 0 12 0zM1.406 6.78A11.96 11.96 0 0 0 0 12c0 6.09 4.532 11.121 10.428 11.892l3.955-6.85a6 6 0 0 1-7.854-7.854L1.406 6.78zM12 24c3.42 0 6.536-1.433 8.754-3.738l-3.95-6.844a6 6 0 0 1-5.632 4.417V24h.828zm0-6a6 6 0 1 0 0-12 6 6 0 0 0 0 12z"/>
-          </svg>
-          <span class="dynamic-browser-text">Add to Chrome — Free</span>
-        </button>
+        <div class="banner-btn-group">
+          <button class="btn-primary btn-banner-cta trigger-install-modal">
+            <svg class="btn-chrome-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C8.21 0 4.831 1.757 2.632 4.501l3.953 6.848A6 6 0 0 1 12 6h9.542A12 12 0 0 0 12 0zM1.406 6.78A11.96 11.96 0 0 0 0 12c0 6.09 4.532 11.121 10.428 11.892l3.955-6.85a6 6 0 0 1-7.854-7.854L1.406 6.78zM12 24c3.42 0 6.536-1.433 8.754-3.738l-3.95-6.844a6 6 0 0 1-5.632 4.417V24h.828zm0-6a6 6 0 1 0 0-12 6 6 0 0 0 0 12z"/>
+            </svg>
+            <span class="dynamic-browser-text">Add to Chrome — Free</span>
+          </button>
+          <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener" class="btn-banner-secondary">
+            <span>🔑 Get Free Gemini Key ↗</span>
+          </a>
+        </div>
       </div>
 
     </div>
   </section>
 
-  <!-- FAQ Section -->
+  <!-- FAQ Section (Expanded with Setup & API Key Questions) -->
   <section class="section-faq" id="faq">
     <div class="section-container">
       <div class="section-header">
         <span class="section-tag">FREQUENTLY ASKED QUESTIONS</span>
         <h2 class="section-title">Everything You Need to Know</h2>
+        <p class="section-desc">Answers to common questions about installation, API keys, privacy protection, and supported browsers.</p>
       </div>
 
       <div class="faq-list">
         
+        <div class="faq-item open">
+          <div class="faq-question">
+            <span>How do I get a 100% free API key for Pluto AI?</span>
+            <span class="faq-chevron">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>You can get a completely free API key directly from <strong>Google AI Studio</strong>. Visit <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener">aistudio.google.com/app/apikey</a>, sign in with any standard Google account, and click <strong>"Create API key"</strong>. Google's free tier provides up to 500 requests per day via <code>gemini-2.5-flash-lite</code> with zero fees and no credit card required.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>How do I load my API key and test the connection?</span>
+            <span class="faq-chevron">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Open the Pluto AI side panel in your browser, click the ⚙️ <strong>Settings</strong> icon in the top-right header, select your active provider (e.g. <em>Google Gemini</em>), and paste your key into the API Key input. Then click the <strong>"⚡ Test Key"</strong> button. Pluto AI sends a lightweight verification ping in ~200ms and displays <code>🟢 Connected (200 OK)</code>. Finally, click <strong>"Save Settings"</strong> to lock in your configuration.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Where is my API key stored and is it secure?</span>
+            <span class="faq-chevron">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Your API key is stored 100% on your local computer in Chrome's sandboxed <code>chrome.storage.local</code> with <strong>AES-GCM-256</strong> client-side encryption. Pluto AI is an open, client-side browser extension with zero central telemetry backends. Your key is NEVER sent to Pluto AI developers or any third-party logging service.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Can I use Pluto AI without any API key or payment?</span>
+            <span class="faq-chevron">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Yes! In the Settings modal, choose <strong>"Demo Simulator"</strong> or <strong>"Local/Offline Privacy Mode"</strong> under Active Provider. In this mode, Pluto AI operates purely locally using simulated heuristics and on-device DOM analysis without making any external API calls or requiring any secret keys.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>What should I do if the "Test Connection" button fails?</span>
+            <span class="faq-chevron">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>If testing your key returns an error (such as HTTP 401 or 403), check the following common issues: (1) Ensure no accidental leading or trailing spaces were copied with the key string. (2) Ensure the provider selected in the dropdown matches the key format (e.g. Google Gemini keys start with <code>AIzaSy</code>, OpenAI keys start with <code>sk-</code>). (3) For Google AI Studio, ensure your Google Cloud project has Generative Language API enabled. (4) If using a corporate VPN or network proxy, make sure outgoing requests to <code>generativelanguage.googleapis.com</code> are not blocked.</p>
+          </div>
+        </div>
+
         <div class="faq-item">
           <div class="faq-question">
             <span>How does Pluto AI guarantee zero raw PII leaks?</span>
             <span class="faq-chevron">+</span>
           </div>
           <div class="faq-answer">
-            <p>Pluto AI implements an on-device Privacy Shield before any data leaves your browser. It uses Luhn checksum verification for credit cards, contextual DOM attribute markers for password fields, and strict regular expressions for emails, phones, and IDs. Sensitive data is replaced with hashed tokens (e.g., <code>[REDACTED_CARD_VISA_8812]</code>), and the payload is encrypted using AES-GCM-256 before inference.</p>
+            <p>Pluto AI implements an on-device Privacy Shield before any data leaves your browser. It uses Luhn checksum verification for credit cards, contextual DOM attribute markers for password fields, and strict regular expressions for emails, phones, Aadhaar, PAN, and identity tokens. Sensitive data is replaced with deterministic hashed tokens (e.g., <code>[REDACTED_CARD_VISA_8812]</code>), and the payload is encrypted using AES-GCM-256 before inference.</p>
           </div>
         </div>
 
@@ -644,7 +1035,7 @@
             <span class="faq-chevron">+</span>
           </div>
           <div class="faq-answer">
-            <p>Pluto AI supports Google Gemini (Gemini 2.5 Flash Lite with 500 free requests per day, Gemini 2.5 Pro), OpenAI (GPT-4o, GPT-4o-mini), Anthropic (Claude 3.5 Sonnet), Groq, DeepSeek, Together AI, xAI Grok, Cohere, custom endpoints, and a 100% Offline Simulator mode.</p>
+            <p>Pluto AI supports Google Gemini (Gemini 2.5 Flash Lite with 500 free requests per day, Gemini 2.5 Pro), OpenAI (GPT-4o, GPT-4o-mini), Anthropic (Claude 3.5 Sonnet), Groq (Llama 3.3 70B Vision), Mistral AI (Pixtral), DeepSeek (V3/R1), Together AI, xAI Grok, Cohere, custom OpenAI-compatible endpoints (such as local vLLM, Ollama, or LMStudio), and a 100% Offline Simulator mode.</p>
           </div>
         </div>
 
@@ -654,17 +1045,7 @@
             <span class="faq-chevron">+</span>
           </div>
           <div class="faq-answer">
-            <p>Pluto AI is built on standard Chrome Manifest V3 Side Panel APIs and works seamlessly across Google Chrome, Microsoft Edge, Brave Browser, Arc Browser, Opera, and Vivaldi.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question">
-            <span>Do I need to pay or provide a credit card?</span>
-            <span class="faq-chevron">+</span>
-          </div>
-          <div class="faq-answer">
-            <p>No! Pluto AI is completely free to download and use. You can bring your own free API keys (like Google AI Studio free tier) or use the built-in offline test engine without spending a dime.</p>
+            <p>Pluto AI is built on standard Chromium Manifest V3 Side Panel APIs and works seamlessly across Google Chrome, Microsoft Edge, Brave Browser, Arc Browser, Opera, and Vivaldi.</p>
           </div>
         </div>
 
@@ -723,8 +1104,8 @@
         <div class="modal-sparkle-icon">
           <img src="assets/emblem.png" alt="Pluto AI Logo" width="56" height="56" style="border-radius: 14px; filter: drop-shadow(0 0 20px rgba(138, 180, 248, 0.6));">
         </div>
-        <h2 class="modal-title">Adding Pluto AI to Your Browser</h2>
-        <p class="modal-subtitle">Your download has started! Follow these quick 10-second steps to activate the side panel.</p>
+        <h2 class="modal-title">Pluto AI Quick Setup Wizard</h2>
+        <p class="modal-subtitle">Your download has started! Follow these 3 quick steps to install, grab a free API key, and test your connection.</p>
       </div>
 
       <!-- Download status bar -->
@@ -741,43 +1122,158 @@
         </a>
       </div>
 
-      <!-- Interactive 3-Step Visual Guide -->
-      <div class="modal-steps-container">
-        
-        <div class="modal-step">
-          <div class="step-badge-circle">1</div>
-          <div class="step-info">
-            <h4>Extract the Downloaded ZIP</h4>
-            <p>Right-click <code>pluto-ai-v2.0.0.zip</code> in your Downloads folder and select <strong>"Extract All..."</strong>.</p>
-          </div>
-        </div>
-
-        <div class="modal-step">
-          <div class="step-badge-circle">2</div>
-          <div class="step-info">
-            <h4>Open Extensions & Toggle Developer Mode</h4>
-            <p>Navigate to <code>chrome://extensions</code> and turn on the <strong>Developer mode</strong> toggle in the top-right corner.</p>
-            <div class="quick-copy-bar">
-              <input type="text" value="chrome://extensions" readonly id="chrome-ext-url-input">
-              <button id="btn-copy-modal-url" class="btn-copy-sm">Copy URL</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="modal-step">
-          <div class="step-badge-circle">3</div>
-          <div class="step-info">
-            <h4>Click "Load unpacked" & Select Folder</h4>
-            <p>Click the <strong>"Load unpacked"</strong> button in your browser and select the extracted folder. Pluto AI will immediately be active!</p>
-          </div>
-        </div>
-
+      <!-- 3-Segmented Modal Tabs Switcher -->
+      <div class="modal-nav-tabs">
+        <button class="modal-tab-btn active" data-modaltab="modal-step-install">
+          <span>📦 1. Install</span>
+        </button>
+        <button class="modal-tab-btn" data-modaltab="modal-step-apikey">
+          <span>🔑 2. Get API Key</span>
+        </button>
+        <button class="modal-tab-btn" data-modaltab="modal-step-connect">
+          <span>⚡ 3. Test Connection</span>
+        </button>
       </div>
 
-      <div class="modal-footer">
-        <button class="btn-primary btn-modal-done" id="btn-modal-done">
-          <span>✓ Got it, Launch Pluto AI</span>
-        </button>
+      <!-- TAB 1: INSTALL EXTENSION -->
+      <div id="modal-step-install" class="modal-tab-content active">
+        <div class="modal-steps-container">
+          
+          <div class="modal-step">
+            <div class="step-badge-circle">1</div>
+            <div class="step-info">
+              <h4>Extract the Downloaded ZIP</h4>
+              <p>Right-click <code>pluto-ai-v2.0.0.zip</code> in your Downloads folder and select <strong>"Extract All..."</strong>.</p>
+            </div>
+          </div>
+
+          <div class="modal-step">
+            <div class="step-badge-circle">2</div>
+            <div class="step-info">
+              <h4>Open Extensions & Toggle Developer Mode</h4>
+              <p>Navigate to <code>chrome://extensions</code> and turn on the <strong>Developer mode</strong> toggle in the top-right corner.</p>
+              <div class="quick-copy-bar">
+                <input type="text" value="chrome://extensions" readonly id="chrome-ext-url-input">
+                <button id="btn-copy-modal-url" class="btn-copy-sm" data-copy="chrome://extensions">Copy URL</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-step">
+            <div class="step-badge-circle">3</div>
+            <div class="step-info">
+              <h4>Click "Load unpacked" & Select Folder</h4>
+              <p>Click the <strong>"Load unpacked"</strong> button in your browser and select the extracted folder. Pluto AI will immediately appear in your extensions list!</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="modal-footer-nav">
+          <button class="btn-primary btn-modal-next" data-nexttab="modal-step-apikey">
+            <span>Next: Get Free API Key (Step 2) →</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- TAB 2: GET FREE API KEY -->
+      <div id="modal-step-apikey" class="modal-tab-content">
+        <div class="modal-key-guide">
+          <div class="modal-key-banner">
+            <div class="key-banner-badge">RECOMMENDED • 100% FREE</div>
+            <h4>Get Your Google Gemini API Key in 30 Seconds</h4>
+            <p>Google AI Studio provides a free tier with <strong>500 free requests per day</strong> and zero credit cards needed.</p>
+          </div>
+
+          <ol class="modal-key-steps">
+            <li>
+              <span>1</span>
+              <div>
+                <strong>Go to Google AI Studio:</strong>
+                <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener" class="link-external-action">
+                  Open aistudio.google.com/app/apikey ↗
+                </a>
+              </div>
+            </li>
+            <li>
+              <span>2</span>
+              <div>
+                <strong>Sign in:</strong> Use any Google / Gmail account (no billing needed).
+              </div>
+            </li>
+            <li>
+              <span>3</span>
+              <div>
+                <strong>Create Key:</strong> Click the blue <strong>"Create API key"</strong> button & choose "Create in new project".
+              </div>
+            </li>
+            <li>
+              <span>4</span>
+              <div>
+                <strong>Copy Key:</strong> Copy the generated string starting with <code>AIzaSy...</code>.
+              </div>
+            </li>
+          </ol>
+
+          <div class="modal-key-actions">
+            <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener" class="btn-primary btn-modal-aistudio">
+              <span>🔑 Open Google AI Studio ↗</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="modal-footer-nav">
+          <button class="btn-secondary btn-modal-prev" data-prevtab="modal-step-install">
+            <span>← Back</span>
+          </button>
+          <button class="btn-primary btn-modal-next" data-nexttab="modal-step-connect">
+            <span>Next: Test Connection (Step 3) →</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- TAB 3: LOAD & TEST CONNECTION -->
+      <div id="modal-step-connect" class="modal-tab-content">
+        <div class="modal-connect-guide">
+          
+          <div class="modal-step">
+            <div class="step-badge-circle">1</div>
+            <div class="step-info">
+              <h4>Open Side Panel & Click Settings (⚙️)</h4>
+              <p>Click the Pluto AI extension icon in your browser toolbar, then click the <strong>⚙️ Settings</strong> icon in the top header.</p>
+            </div>
+          </div>
+
+          <div class="modal-step">
+            <div class="step-badge-circle">2</div>
+            <div class="step-info">
+              <h4>Paste Your Key & Click "⚡ Test Key"</h4>
+              <p>Select <strong>Google Gemini</strong>, paste your key into the API key field, and click <strong>"⚡ Test Key"</strong>. The indicator will turn green: <code>🟢 Connected (200 OK)</code>.</p>
+            </div>
+          </div>
+
+          <div class="modal-step">
+            <div class="step-badge-circle">3</div>
+            <div class="step-info">
+              <h4>Click "Save Settings" & Start Browsing</h4>
+              <p>Click <strong>"Save Settings"</strong>. The status switches to <code>🟢 IDLE</code> — try any prompt like <em>"Summarize this page"</em> or <em>"Extract table data"</em>!</p>
+            </div>
+          </div>
+
+          <div class="modal-privacy-callout">
+            <span>🛡️ <strong>Zero Server Storage:</strong> Your key is stored locally with AES-GCM-256 encryption. Never sent to Pluto AI servers.</span>
+          </div>
+
+        </div>
+
+        <div class="modal-footer-nav">
+          <button class="btn-secondary btn-modal-prev" data-prevtab="modal-step-apikey">
+            <span>← Back</span>
+          </button>
+          <button class="btn-primary btn-modal-done" id="btn-modal-done">
+            <span>✓ Got it, Ready to Automate!</span>
+          </button>
+        </div>
       </div>
 
     </div>
