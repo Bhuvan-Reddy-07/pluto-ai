@@ -3,6 +3,7 @@
  */
 
 :root {
+  color-scheme: dark;
   --bg-primary: #070a12;
   --bg-secondary: #0f172a;
   --bg-card: rgba(15, 23, 42, 0.8);
@@ -209,6 +210,15 @@ body {
   padding: 8px 12px;
   border-radius: 6px;
   outline: none;
+  color-scheme: dark;
+}
+
+select option,
+.form-input option {
+  background-color: #0f172a !important;
+  color: #f8fafc !important;
+  font-size: 12px;
+  padding: 8px 10px;
 }
 
 .form-input:focus {
