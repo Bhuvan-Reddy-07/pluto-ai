@@ -4,6 +4,7 @@
  */
 
 :root {
+  color-scheme: dark;
   --bg-base: #0a0c10;
   --bg-surface: #131314;
   --bg-card: #1e1f20;
@@ -1876,6 +1877,15 @@ body {
   font-size: 13px;
   outline: none;
   cursor: pointer;
+  color-scheme: dark;
+}
+
+.sim-select option,
+select option {
+  background-color: #1e1f20 !important;
+  color: #f0f4f9 !important;
+  font-size: 13px;
+  padding: 8px 12px;
 }
 
 .sim-select:focus {
