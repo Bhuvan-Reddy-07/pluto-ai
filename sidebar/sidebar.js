@@ -36,8 +36,11 @@
     timelineCount: document.getElementById('timeline-count'),
     resultCard: document.getElementById('result-card'),
     resultText: document.getElementById('result-text'),
+    btnClearChatGoal: document.getElementById('btn-clear-chat-goal'),
+    btnClearChatResult: document.getElementById('btn-clear-chat-result'),
 
     // Controls
+    btnClearChat: document.getElementById('btn-clear-chat'),
     stopControls: document.getElementById('stop-controls'),
     btnStopAgent: document.getElementById('btn-stop-agent'),
     btnPauseAgent: document.getElementById('btn-pause-agent'),
@@ -57,6 +60,7 @@
     // Gemini Input Bar Controls
     btnQuickTools: document.getElementById('btn-quick-tools'),
     quickToolsMenu: document.getElementById('quick-tools-menu'),
+    toolClearChat: document.getElementById('tool-clear-chat'),
     toolScanPii: document.getElementById('tool-scan-pii'),
     toolExtractTables: document.getElementById('tool-extract-tables'),
     toolClearOverlays: document.getElementById('tool-clear-overlays'),
@@ -280,21 +284,55 @@
     });
   }
 
+  // 1.5 Clear / Reset Chat Session
+  async function clearChatSession() {
+    setStatus('idle');
+    await clearSessionState();
+    if (elements.taskFeed) elements.taskFeed.style.display = 'none';
+    if (elements.welcomeCard) elements.welcomeCard.style.display = 'flex';
+    if (elements.timelineList) elements.timelineList.innerHTML = '';
+    if (elements.timelineCount) elements.timelineCount.textContent = '0 steps';
+    if (elements.resultCard) elements.resultCard.style.display = 'none';
+    if (elements.stopControls) elements.stopControls.style.display = 'none';
+    if (elements.humanConfirmBox) elements.humanConfirmBox.style.display = 'none';
+    if (elements.planCard) elements.planCard.style.display = 'none';
+    if (elements.activeGoalText) elements.activeGoalText.textContent = '';
+    if (elements.quickToolsMenu) elements.quickToolsMenu.style.display = 'none';
+    if (elements.promptInput) {
+      elements.promptInput.value = '';
+      elements.promptInput.style.height = 'auto';
+    }
+    setScreenGlow(false);
+    chrome.runtime.sendMessage({ action: 'RESET_AGENT_STATE' }).catch(() => {});
+    chrome.runtime.sendMessage({ action: 'CLEANUP_OVERLAYS' }).catch(() => {});
+    if (typeof pageBridgeDirectCall === 'function') {
+      pageBridgeDirectCall('CLEANUP_OVERLAYS', {}).catch(() => {});
+    }
+    speakVoiceMessage('Chat cleared.', true);
+  }
+
   // 2. Event Listeners
   function setupEventListeners() {
+    // Clear chat buttons
+    if (elements.btnClearChat) {
+      elements.btnClearChat.addEventListener('click', clearChatSession);
+    }
+    if (elements.btnClearChatGoal) {
+      elements.btnClearChatGoal.addEventListener('click', clearChatSession);
+    }
+    if (elements.btnClearChatResult) {
+      elements.btnClearChatResult.addEventListener('click', clearChatSession);
+    }
+    if (elements.toolClearChat) {
+      elements.toolClearChat.addEventListener('click', () => {
+        if (elements.quickToolsMenu) elements.quickToolsMenu.style.display = 'none';
+        clearChatSession();
+      });
+    }
+
     // Status pill reset
     if (elements.statusPill) {
-      elements.statusPill.addEventListener('click', async () => {
-        setStatus('idle');
-        await clearSessionState();
-        elements.taskFeed.style.display = 'none';
-        elements.welcomeCard.style.display = 'flex';
-        elements.timelineList.innerHTML = '';
-        elements.timelineCount.textContent = '0 steps';
-        elements.resultCard.style.display = 'none';
-        elements.stopControls.style.display = 'none';
-        chrome.runtime.sendMessage({ action: 'RESET_AGENT_STATE' }).catch(() => {});
-      });
+      elements.statusPill.addEventListener('click', clearChatSession);
     }
 
     // Quick Provider select
