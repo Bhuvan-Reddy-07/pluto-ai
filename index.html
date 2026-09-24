@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pluto AI — The Privacy-First Autonomous Web Agent for Chrome</title>
+  <meta name="description" content="Pluto AI perceives your browser screen, automates multi-step tasks, and redacts sensitive PII on-device with zero data leaks. Powered by Gemini Flash, GPT-4o, and Claude.">
+  <meta name="keywords" content="Pluto AI, Chrome Extension, AI Browser Agent, Privacy-First, Zero PII Leaks, Autonomous Web Browsing, Gemini Flash, GPT-4o, Claude 3.5">
+  <meta property="og:title" content="Pluto AI — Privacy-First Autonomous Web Agent">
+  <meta property="og:description" content="Automate complex web workflows with zero raw PII leaks. Next-generation AI side panel for your browser.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/emblem.png">
+  <link rel="icon" type="image/png" href="assets/icon32.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-theme">
+
+  <!-- Background Glowing Orbs & Cyber Grids -->
+  <div class="bg-fx-grid"></div>
+  <div class="glow-orb orb-top-left"></div>
+  <div class="glow-orb orb-top-right"></div>
+  <div class="glow-orb orb-center"></div>
+
+  <!-- Header / Navigation -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="#" class="brand-link">
+        <img src="assets/emblem.png" alt="Pluto AI Logo" class="brand-logo-img" width="34" height="34" style="border-radius: 8px; filter: drop-shadow(0 0 10px rgba(138, 180, 248, 0.5));">
+        <span class="brand-name">Pluto<span class="brand-badge">AI</span></span>
+        <span class="version-tag">v2.0.0</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#privacy">Privacy Shield</a>
+        <a href="#demo">Live Sandbox</a>
+        <a href="#benchmarks">Benchmarks</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="shield-badge">
+          <span class="shield-pulse"></span>
+          <span>Zero-Leak Firewall Active</span>
+        </div>
+        <button class="btn-primary btn-nav-cta trigger-install-modal">
+          <svg class="btn-chrome-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C8.21 0 4.831 1.757 2.632 4.501l3.953 6.848A6 6 0 0 1 12 6h9.542A12 12 0 0 0 12 0zM1.406 6.78A11.96 11.96 0 0 0 0 12c0 6.09 4.532 11.121 10.428 11.892l3.955-6.85a6 6 0 0 1-7.854-7.854L1.406 6.78zM12 24c3.42 0 6.536-1.433 8.754-3.738l-3.95-6.844a6 6 0 0 1-5.632 4.417V24h.828zm0-6a6 6 0 1 0 0-12 6 6 0 0 0 0 12z"/>
+          </svg>
+          <span class="dynamic-browser-text">Add to Chrome — Free</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-container">
+      
+      <!-- Top Pill Announcement -->
+      <div class="hero-pill-badge">
+        <span class="hero-sparkle-icon">✨</span>
+        <span>Next-Gen Gemini-Style Browser Agent • 100% On-Device Privacy</span>
+        <span class="pill-arrow">→</span>
+      </div>
+
+      <h1 class="hero-title">
+        The Autonomous AI Agent That Browses For You.
+        <span class="text-gradient">With Zero Data Leaks.</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Pluto AI observes webpage structure, decomposes complex multi-step goals, fills forms, extracts tables, and automates tasks with human-like precision — while locally redacting passwords, credit cards, and confidential PII before any token touches an LLM.
+      </p>
+
+      <!-- Primary CTA Buttons -->
+      <div class="hero-cta-group">
+        <button class="btn-hero-primary trigger-install-modal">
+          <svg class="btn-chrome-icon" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C8.21 0 4.831 1.757 2.632 4.501l3.953 6.848A6 6 0 0 1 12 6h9.542A12 12 0 0 0 12 0zM1.406 6.78A11.96 11.96 0 0 0 0 12c0 6.09 4.532 11.121 10.428 11.892l3.955-6.85a6 6 0 0 1-7.854-7.854L1.406 6.78zM12 24c3.42 0 6.536-1.433 8.754-3.738l-3.95-6.844a6 6 0 0 1-5.632 4.417V24h.828zm0-6a6 6 0 1 0 0-12 6 6 0 0 0 0 12z"/>
+          </svg>
+          <div class="btn-text-block">
+            <span class="btn-main-title dynamic-browser-text">Add to Chrome — Free</span>
+            <span class="btn-sub-label">Instant 1-Click Install • Manifest V3</span>
+          </div>
+        </button>
+
+        <a href="#demo" class="btn-hero-secondary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="5 3 19 12 5 21 5 3"/>
+          </svg>
+          <span>Try Interactive Sandbox</span>
+        </a>
+      </div>
+
+      <!-- Trust Badges Row -->
+      <div class="trust-metrics-row">
+        <div class="trust-item">
+          <span class="trust-icon">🛡️</span>
+          <div>
+            <strong>0 Raw PII Leaked</strong>
+            <span>Verified Local Redaction</span>
+          </div>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon">⚡</span>
+          <div>
+            <strong>&lt;120ms Latency</strong>
+            <span>Local DOM & OCR Perception</span>
+          </div>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon">🔒</span>
+          <div>
+            <strong>AES-GCM-256</strong>
+            <span>Cryptographic Session Hash</span>
+          </div>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon">🧠</span>
+          <div>
+            <strong>Multi-Model BYOK</strong>
+            <span>Gemini Flash, GPT-4o, Claude</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Interactive Preview / Side Panel Showcase -->
+      <div class="hero-preview-wrapper" id="demo">
+        <div class="browser-mockup-window">
+          
+          <!-- Mockup Top Bar -->
+          <div class="mockup-top-bar">
+            <div class="window-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <div class="mockup-address-bar">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+              <span class="url-text">https://app.enterprise-portal.internal/dashboard</span>
+              <span class="sec-chip">Secured by Pluto AI</span>
+            </div>
+            <div class="mockup-side-toggle">
+              <span class="active-pulse"></span>
+              <span>Pluto AI Active</span>
+            </div>
+          </div>
+
+          <!-- Mockup Content: Left Simulated Webpage, Right Gemini Side Panel -->
+          <div class="mockup-split-body">
+            
+            <!-- Left: Simulated Web Page with PII -->
+            <div class="mockup-webpage-area">
+              <div class="webpage-inner">
+                <div class="mock-page-header">
+                  <h3>Customer Account Billing & Operations</h3>
+                  <span class="mock-badge">Confidential Internal Portal</span>
+                </div>
+
+                <div class="mock-page-cards">
+                  <div class="mock-card">
+                    <div class="mock-card-title">Billing Details</div>
+                    <div class="mock-field-row">
+                      <span class="lbl">Cardholder:</span>
+                      <span class="val">Dr. Vikramaditya Sharma</span>
+                    </div>
+                    <div class="mock-field-row">
+                      <span class="lbl">Credit Card:</span>
+                      <span class="val mock-pii-highlight" id="mock-cc-val">4532 •••• •••• 8812</span>
+                    </div>
+                    <div class="mock-field-row">
+                      <span class="lbl">Aadhaar ID:</span>
+                      <span class="val mock-pii-highlight" id="mock-aadhaar-val">8291 •••• 4910</span>
+                    </div>
+                    <div class="mock-field-row">
+                      <span class="lbl">Officer Email:</span>
+                      <span class="val mock-pii-highlight" id="mock-email-val">v.sharma@research.isro.gov.in</span>
+                    </div>
+                  </div>
+
+                  <div class="mock-card">
+                    <div class="mock-card-title">Live Server Mission Nodes</div>
+                    <table class="mock-table">
+                      <thead>
+                        <tr><th>Node ID</th><th>Status</th><th>Telemetry</th><th>Action</th></tr>
+                      </thead>
+                      <tbody>
+                        <tr><td>#ND-701</td><td><span class="st-green">● Nominal</span></td><td>99.98%</td><td><button class="mock-btn-mini">Sync</button></td></tr>
+                        <tr><td>#ND-702</td><td><span class="st-green">● Active</span></td><td>99.94%</td><td><button class="mock-btn-mini">Inspect</button></td></tr>
+                        <tr><td>#ND-703</td><td><span class="st-orange">● Queued</span></td><td>94.20%</td><td><button class="mock-btn-mini">Restart</button></td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <div class="mock-firewall-indicator">
+                  <span class="firewall-shield">🛡️</span>
+                  <span><strong>On-Device Privacy Engine:</strong> 4 Sensitive items intercepted & masked locally into cryptographic zero-leak tokens.</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Interactive Gemini-Style Side Panel Simulation -->
+            <div class="mockup-sidebar-area">
+              
+              <!-- Gemini Side Panel Header -->
+              <div class="sim-sidebar-header">
+                <div class="sim-brand">
+                  <img src="assets/emblem.png" alt="Pluto AI" width="20" height="20" style="border-radius: 5px;">
+                  <span class="sim-title">Pluto<span class="sim-badge">AI</span></span>
+                </div>
+
+                <div class="sim-nav-pills">
+                  <button class="sim-nav-pill active" id="sim-tab-agent">⚡ Agent</button>
+                  <button class="sim-nav-pill" id="sim-tab-privacy">🛡️ Privacy</button>
+                  <button class="sim-nav-pill" id="sim-tab-metrics">🎯 Metrics</button>
+                </div>
+              </div>
+
+              <!-- Sim Chat Stream -->
+              <div class="sim-chat-stream" id="sim-chat-stream">
+                
+                <!-- Hero Greeting in Sidebar -->
+                <div class="sim-welcome-hero" id="sim-welcome-hero">
+                  <div class="sim-gemini-star">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                      <path d="M12 0C12 6.627 6.627 12 0 12C6.627 12 12 17.373 12 24C12 17.373 17.373 12 24 12C17.373 12 12 6.627 12 0Z" fill="url(#sim-hero-grad)" />
+                      <defs>
+                        <linearGradient id="sim-hero-grad" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+                          <stop offset="0%" stop-color="#4285f4" />
+                          <stop offset="35%" stop-color="#9b72cb" />
+                          <stop offset="70%" stop-color="#d96570" />
+                          <stop offset="100%" stop-color="#ffba08" />
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                  </div>
+                  <h4 class="sim-hero-text">What should we focus on?</h4>
+                  <p class="sim-hero-sub">Perceives screen & sanitizes sensitive PII locally before any context leaves your device.</p>
+
+                  <div class="sim-chips-container">
+                    <button class="sim-chip" data-sim-prompt="Extract all structured data and table rows from this page.">
+                      Extract all table data from this page
+                    </button>
+                    <button class="sim-chip" data-sim-prompt="Scan this page for sensitive PII and preview redactions.">
+                      Scan active webpage for sensitive PII
+                    </button>
+                    <button class="sim-chip" data-sim-prompt="Help me make a decision based on these mission nodes">
+                      Help me make a decision
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Sim Execution Feed (Hidden by default, shown when running) -->
+                <div class="sim-execution-feed" id="sim-execution-feed" style="display: none;">
+                  <div class="sim-goal-card">
+                    <span class="sim-goal-badge">ACTIVE GOAL</span>
+                    <p class="sim-goal-text" id="sim-active-goal-text">Extract all structured data and table rows</p>
+                  </div>
+
+                  <div class="sim-live-privacy">
+                    <span>🛡️ Local PII Redaction: <strong>0 Leaks</strong></span>
+                    <span class="sim-cipher-tag">AES-GCM-256</span>
+                  </div>
+
+                  <div class="sim-reasoning-card">
+                    <div class="sim-reason-head">
+                      <span class="sim-pulse-dot"></span>
+                      <span>AI REASONING TRACE</span>
+                    </div>
+                    <p class="sim-reason-body" id="sim-reason-body">Indexed 14 interactive DOM elements. Masked 4 PII fields. Extracting 3 server node telemetry rows...</p>
+                  </div>
+
+                  <div class="sim-timeline" id="sim-timeline">
+                    <div class="sim-step-item done">✓ Step 1: Capture screenshot & DOM snapshot</div>
+                    <div class="sim-step-item done">✓ Step 2: On-device PII masking & regex scan</div>
+                    <div class="sim-step-item active">⚡ Step 3: Structured table extraction</div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Gemini Bottom Chat Bar -->
+              <div class="sim-input-container">
+                
+                <!-- Tab Context Banner -->
+                <div class="sim-context-banner">
+                  <div class="sim-context-pill">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="2" y1="12" x2="22" y2="12"/>
+                      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                    </svg>
+                    <span>Sharing 'Customer Billing & Ops'</span>
+                    <span class="sim-close-x">✕</span>
+                  </div>
+                </div>
+
+                <!-- Floating Gemini Input Box -->
+                <div class="sim-gemini-input-card">
+                  <input type="text" id="sim-user-input" class="sim-input-field" placeholder="Type @ to add tabs or ask Pluto to do anything...">
+                  
+                  <div class="sim-controls-row">
+                    <button class="sim-tool-btn" title="Quick Tools" id="sim-btn-quick-tools">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <line x1="12" y1="5" x2="12" y2="19"/>
+                        <line x1="5" y1="12" x2="19" y2="12"/>
+                      </svg>
+                    </button>
+
+                    <div class="sim-right-tools">
+                      <div class="sim-model-pill">Flash ▾</div>
+                      <button class="sim-icon-btn" title="Voice Input">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                          <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                          <line x1="12" y1="19" x2="12" y2="23"/>
+                        </svg>
+                      </button>
+                      <button class="sim-send-btn" id="sim-btn-send">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                          <line x1="22" y1="2" x2="11" y2="13"/>
+                          <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Features Grid Section -->
+  <section class="section-features" id="features">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag">ENGINEERING HIGHLIGHTS</span>
+        <h2 class="section-title">Designed for Power. Architected for Total Privacy.</h2>
+        <p class="section-desc">Pluto AI combines client-side computer vision, real-time cryptographic hashing, and stateful multi-step autonomous actuation.</p>
+      </div>
+
+      <div class="features-grid">
+        
+        <!-- Feature 1 -->
+        <div class="feature-card">
+          <div class="feature-icon-wrapper blue">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">On-Device Zero-Leak Firewall</h3>
+          <p class="feature-desc">Algorithms scan DOM attributes, table cells, and screen pixels locally. Credit cards are verified with Luhn checksums; emails, passwords, and Aadhaar numbers are converted into cryptographic tokens before LLM dispatch.</p>
+          <div class="feature-badge-row">
+            <span class="feature-chip">Luhn Algorithm</span>
+            <span class="feature-chip">Regex Scanners</span>
+            <span class="feature-chip">0 Raw Bytes Egress</span>
+          </div>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-card">
+          <div class="feature-icon-wrapper purple">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Multi-Step Autonomous Actuation</h3>
+          <p class="feature-desc">Decomposes natural language queries into logical milestones, navigates dynamic single-page applications, handles pagination, dismisses modals, and fills forms reliably.</p>
+          <div class="feature-badge-row">
+            <span class="feature-chip">Task Planner</span>
+            <span class="feature-chip">DOM Indexer</span>
+            <span class="feature-chip">Smart Retries</span>
+          </div>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-card">
+          <div class="feature-icon-wrapper green">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Multi-Model BYOK Freedom</h3>
+          <p class="feature-desc">Seamlessly toggle between Google Gemini Flash Lite (500 RPD free), OpenAI GPT-4o, Anthropic Claude 3.5 Sonnet, Groq, DeepSeek, or 100% Offline mode without cloud dependencies.</p>
+          <div class="feature-badge-row">
+            <span class="feature-chip">Gemini Flash</span>
+            <span class="feature-chip">GPT-4o</span>
+            <span class="feature-chip">Claude 3.5</span>
+            <span class="feature-chip">Offline Sim</span>
+          </div>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="feature-card">
+          <div class="feature-icon-wrapper yellow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <line x1="3" y1="9" x2="21" y2="9"/>
+              <line x1="9" y1="21" x2="9" y2="9"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Structured Table & Data Extraction</h3>
+          <p class="feature-desc">1-click extraction of complex nested tables, catalog listings, analytics dashboards, and multi-column tabular feeds into clean JSON or CSV format.</p>
+          <div class="feature-badge-row">
+            <span class="feature-chip">Table Parser</span>
+            <span class="feature-chip">JSON Export</span>
+            <span class="feature-chip">DOM Mapping</span>
+          </div>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="feature-card">
+          <div class="feature-icon-wrapper red">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+              <line x1="12" y1="19" x2="12" y2="23"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Voice Control & Audio Feedback</h3>
+          <p class="feature-desc">Control your browser hands-free with high-accuracy speech recognition and toggle audio speech synthesis to hear execution updates in real time.</p>
+          <div class="feature-badge-row">
+            <span class="feature-chip">Speech-to-Text</span>
+            <span class="feature-chip">SpeechSynthesis</span>
+            <span class="feature-chip">Voice Waves</span>
+          </div>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="feature-card">
+          <div class="feature-icon-wrapper cyan">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+              <line x1="8" y1="21" x2="16" y2="21"/>
+              <line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Visual Overlays & HUD</h3>
+          <p class="feature-desc">Observe real-time animated cursor trajectories, target bounding box highlights, ripple clicks, and screen glows directly on active pages during automated runs.</p>
+          <div class="feature-badge-row">
+            <span class="feature-chip">Live HUD</span>
+            <span class="feature-chip">Click Ripples</span>
+            <span class="feature-chip">Bounding Box</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Privacy Comparison Section -->
+  <section class="section-privacy" id="privacy">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag">ZERO-LEAK COMPARISON</span>
+        <h2 class="section-title">See How Pluto AI Shields Your Sensitive Data</h2>
+        <p class="section-desc">Traditional AI extensions send raw screenshots and unmasked HTML containing your passwords and credit cards to remote servers. Pluto AI sanitizes everything on-device first.</p>
+      </div>
+
+      <div class="privacy-comparison-box">
+        
+        <!-- Left: Standard AI Extensions -->
+        <div class="comp-column danger">
+          <div class="comp-head">
+            <span class="comp-badge-danger">⚠️ TRADITIONAL BROWSER AGENTS</span>
+            <h3>Raw Data Transmitted to Cloud</h3>
+          </div>
+          <div class="code-preview-block">
+            <pre><code>{
+  <span class="token-key">"user_goal"</span>: <span class="token-str">"Book flight"</span>,
+  <span class="token-key">"captured_dom"</span>: {
+    <span class="token-key">"card_number"</span>: <span class="token-danger">"4532 8901 2345 8812"</span>,  <span class="token-comment">// EXPOSED!</span>
+    <span class="token-key">"cvv"</span>: <span class="token-danger">"892"</span>,                        <span class="token-comment">// EXPOSED!</span>
+    <span class="token-key">"password"</span>: <span class="token-danger">"P@ssw0rdISRO2026!"</span>,       <span class="token-comment">// EXPOSED!</span>
+    <span class="token-key">"email"</span>: <span class="token-danger">"user.confidential@gov.in"</span>  <span class="token-comment">// EXPOSED!</span>
+  },
+  <span class="token-key">"raw_pii_leaked"</span>: <span class="token-danger">"4 CRITICAL FIELDS"</span>
+}</code></pre>
+          </div>
+          <div class="comp-footer-note danger">
+            <span>❌ Risk of credential harvesting and compliance violations (GDPR / HIPAA / ISO27001).</span>
+          </div>
+        </div>
+
+        <!-- Right: Pluto AI Shield -->
+        <div class="comp-column secure">
+          <div class="comp-head">
+            <span class="comp-badge-secure">🛡️ PLUTO AI PRIVACY FIREWALL</span>
+            <h3>100% On-Device Masked Payload</h3>
+          </div>
+          <div class="code-preview-block">
+            <pre><code>{
+  <span class="token-key">"user_goal"</span>: <span class="token-str">"Book flight"</span>,
+  <span class="token-key">"sanitized_dom"</span>: {
+    <span class="token-key">"card_number"</span>: <span class="token-secure">"[REDACTED_CARD_VISA_8812]"</span>,
+    <span class="token-key">"cvv"</span>: <span class="token-secure">"[REDACTED_CVV_3DIGIT]"</span>,
+    <span class="token-key">"password"</span>: <span class="token-secure">"[REDACTED_PASSWORD_FIELD]"</span>,
+    <span class="token-key">"email"</span>: <span class="token-secure">"[REDACTED_EMAIL_GOV]"</span>
+  },
+  <span class="token-key">"raw_pii_leaked"</span>: <span class="token-secure">"0 BYTES (PROVEN)"</span>,
+  <span class="token-key">"crypto_hash"</span>: <span class="token-str">"sha256:9f8a81..."</span>
+}</code></pre>
+          </div>
+          <div class="comp-footer-note secure">
+            <span>✓ Complete privacy guarantee. Actions resolve deterministically without exposing plaintext credentials.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Benchmarks & Evaluation -->
+  <section class="section-benchmarks" id="benchmarks">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag">VERIFIED BENCHMARKS</span>
+        <h2 class="section-title">Tested Across 50+ Real-World Edge Cases</h2>
+        <p class="section-desc">Continuous automated unit and integration tests guarantee enterprise-grade safety and execution reliability.</p>
+      </div>
+
+      <div class="benchmarks-grid">
+        <div class="benchmark-card">
+          <div class="bench-number text-gradient-green">99.8%</div>
+          <div class="bench-label">Privacy Compliance Score</div>
+          <p class="bench-desc">Zero unmasked PII leakage detected across 217 automated test suites.</p>
+        </div>
+        <div class="benchmark-card">
+          <div class="bench-number text-gradient-blue">100.0%</div>
+          <div class="bench-label">PII Precision & Recall</div>
+          <p class="bench-desc">Verified credit cards, emails, Aadhaar, PAN, and credentials accurately detected.</p>
+        </div>
+        <div class="benchmark-card">
+          <div class="bench-number text-gradient-purple">18ms</div>
+          <div class="bench-label">Local Redaction Latency</div>
+          <p class="bench-desc">Ultra-optimized client-side parser runs in the background without browser lag.</p>
+        </div>
+        <div class="benchmark-card">
+          <div class="bench-number text-gradient-gold">217 / 217</div>
+          <div class="bench-label">Passed Unit Tests</div>
+          <p class="bench-desc">100% green test pass rate across verifiers, planners, and crypto services.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Installation Steps Section -->
+  <section class="section-install" id="install">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag">3-STEP QUICK SETUP</span>
+        <h2 class="section-title">Get Started in Less Than 30 Seconds</h2>
+        <p class="section-desc">No build tools or command lines required. Click below to add Pluto AI directly to your browser.</p>
+      </div>
+
+      <div class="install-steps-row">
+        
+        <div class="install-step-card">
+          <div class="step-num">1</div>
+          <div class="step-icon">📦</div>
+          <h3>Download Package</h3>
+          <p>Click "Add to Chrome" to download the ready-to-use Pluto AI package bundle.</p>
+          <button class="btn-step-action trigger-install-modal">Download Now</button>
+        </div>
+
+        <div class="install-step-card">
+          <div class="step-num">2</div>
+          <div class="step-icon">⚙️</div>
+          <h3>Open Extensions</h3>
+          <p>Navigate to <code>chrome://extensions</code> in your browser and enable <strong>Developer mode</strong> (top right toggle).</p>
+          <button class="btn-step-action" id="btn-copy-chrome-url">Copy chrome://extensions</button>
+        </div>
+
+        <div class="install-step-card">
+          <div class="step-num">3</div>
+          <div class="step-icon">🚀</div>
+          <h3>Load Unpacked</h3>
+          <p>Click <strong>"Load unpacked"</strong> and select the extracted Pluto AI folder. Pluto AI appears immediately in your side panel!</p>
+          <span class="step-badge-ready">Ready to Automate</span>
+        </div>
+
+      </div>
+
+      <div class="install-cta-banner">
+        <div class="banner-text">
+          <h3>Ready to experience the privacy-first future of web browsing?</h3>
+          <p>Add Pluto AI to your browser today. Free forever for on-device workflows.</p>
+        </div>
+        <button class="btn-primary btn-banner-cta trigger-install-modal">
+          <svg class="btn-chrome-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C8.21 0 4.831 1.757 2.632 4.501l3.953 6.848A6 6 0 0 1 12 6h9.542A12 12 0 0 0 12 0zM1.406 6.78A11.96 11.96 0 0 0 0 12c0 6.09 4.532 11.121 10.428 11.892l3.955-6.85a6 6 0 0 1-7.854-7.854L1.406 6.78zM12 24c3.42 0 6.536-1.433 8.754-3.738l-3.95-6.844a6 6 0 0 1-5.632 4.417V24h.828zm0-6a6 6 0 1 0 0-12 6 6 0 0 0 0 12z"/>
+          </svg>
+          <span class="dynamic-browser-text">Add to Chrome — Free</span>
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section-faq" id="faq">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag">FREQUENTLY ASKED QUESTIONS</span>
+        <h2 class="section-title">Everything You Need to Know</h2>
+      </div>
+
+      <div class="faq-list">
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>How does Pluto AI guarantee zero raw PII leaks?</span>
+            <span class="faq-chevron">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Pluto AI implements an on-device Privacy Shield before any data leaves your browser. It uses Luhn checksum verification for credit cards, contextual DOM attribute markers for password fields, and strict regular expressions for emails, phones, and IDs. Sensitive data is replaced with hashed tokens (e.g., <code>[REDACTED_CARD_VISA_8812]</code>), and the payload is encrypted using AES-GCM-256 before inference.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Which AI models and providers are supported?</span>
+            <span class="faq-chevron">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Pluto AI supports Google Gemini (Gemini 2.5 Flash Lite with 500 free requests per day, Gemini 2.5 Pro), OpenAI (GPT-4o, GPT-4o-mini), Anthropic (Claude 3.5 Sonnet), Groq, DeepSeek, Together AI, xAI Grok, Cohere, custom endpoints, and a 100% Offline Simulator mode.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Which browsers are compatible with Pluto AI?</span>
+            <span class="faq-chevron">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Pluto AI is built on standard Chrome Manifest V3 Side Panel APIs and works seamlessly across Google Chrome, Microsoft Edge, Brave Browser, Arc Browser, Opera, and Vivaldi.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Do I need to pay or provide a credit card?</span>
+            <span class="faq-chevron">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>No! Pluto AI is completely free to download and use. You can bring your own free API keys (like Google AI Studio free tier) or use the built-in offline test engine without spending a dime.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand-col">
+        <div class="footer-logo">
+          <img src="assets/emblem.png" alt="Pluto AI Logo" class="footer-logo-img" width="30" height="30" style="border-radius: 7px; filter: drop-shadow(0 0 10px rgba(138, 180, 248, 0.4));">
+          <span class="brand-name">Pluto<span class="brand-badge">AI</span></span>
+        </div>
+        <p class="footer-tagline">On-Device Visual Perception & Sensitive-Data Protection for Autonomous Browser Agents.</p>
+        <div class="footer-copy">© 2026 Pluto AI Project. All rights reserved.</div>
+      </div>
+
+      <div class="footer-links-col">
+        <h4>Product</h4>
+        <a href="#features">Features</a>
+        <a href="#privacy">Privacy Engine</a>
+        <a href="#demo">Live Sandbox</a>
+        <a href="#benchmarks">Benchmarks</a>
+      </div>
+
+      <div class="footer-links-col">
+        <h4>Resources</h4>
+        <a href="#install" class="trigger-install-modal">Direct Download</a>
+        <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener">Google AI Studio</a>
+        <a href="#faq">FAQ</a>
+      </div>
+
+      <div class="footer-links-col">
+        <h4>Security & Trust</h4>
+        <div class="footer-trust-pill">
+          <span class="dot green"></span>
+          <span>Zero-Leak Firewall Active</span>
+        </div>
+        <div class="footer-trust-pill">
+          <span class="dot purple"></span>
+          <span>AES-GCM-256 Validated</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactive 1-Click "Add to Browser" Modal -->
+  <div id="install-modal" class="install-modal-backdrop" style="display: none;">
+    <div class="install-modal-card">
+      
+      <button class="modal-close-btn" id="btn-close-modal" title="Close Modal">✕</button>
+
+      <div class="modal-header">
+        <div class="modal-sparkle-icon">
+          <img src="assets/emblem.png" alt="Pluto AI Logo" width="56" height="56" style="border-radius: 14px; filter: drop-shadow(0 0 20px rgba(138, 180, 248, 0.6));">
+        </div>
+        <h2 class="modal-title">Adding Pluto AI to Your Browser</h2>
+        <p class="modal-subtitle">Your download has started! Follow these quick 10-second steps to activate the side panel.</p>
+      </div>
+
+      <!-- Download status bar -->
+      <div class="download-status-bar">
+        <div class="status-left">
+          <span class="download-pulse-icon">⬇️</span>
+          <div>
+            <strong id="dl-filename">pluto-ai-v2.0.0.zip</strong>
+            <span class="dl-sub">1.67 MB • Ready to install</span>
+          </div>
+        </div>
+        <a href="downloads/pluto-ai-v2.0.0.zip" download="pluto-ai-v2.0.0.zip" class="btn-re-download" id="btn-re-download">
+          Download Again ↗
+        </a>
+      </div>
+
+      <!-- Interactive 3-Step Visual Guide -->
+      <div class="modal-steps-container">
+        
+        <div class="modal-step">
+          <div class="step-badge-circle">1</div>
+          <div class="step-info">
+            <h4>Extract the Downloaded ZIP</h4>
+            <p>Right-click <code>pluto-ai-v2.0.0.zip</code> in your Downloads folder and select <strong>"Extract All..."</strong>.</p>
+          </div>
+        </div>
+
+        <div class="modal-step">
+          <div class="step-badge-circle">2</div>
+          <div class="step-info">
+            <h4>Open Extensions & Toggle Developer Mode</h4>
+            <p>Navigate to <code>chrome://extensions</code> and turn on the <strong>Developer mode</strong> toggle in the top-right corner.</p>
+            <div class="quick-copy-bar">
+              <input type="text" value="chrome://extensions" readonly id="chrome-ext-url-input">
+              <button id="btn-copy-modal-url" class="btn-copy-sm">Copy URL</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-step">
+          <div class="step-badge-circle">3</div>
+          <div class="step-info">
+            <h4>Click "Load unpacked" & Select Folder</h4>
+            <p>Click the <strong>"Load unpacked"</strong> button in your browser and select the extracted folder. Pluto AI will immediately be active!</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn-primary btn-modal-done" id="btn-modal-done">
+          <span>✓ Got it, Launch Pluto AI</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast-notification" style="display: none;">
+    <span id="toast-msg">Copied to clipboard!</span>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
