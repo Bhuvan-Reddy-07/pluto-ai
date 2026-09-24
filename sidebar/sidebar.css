@@ -124,14 +124,23 @@ body, html {
    ========================================================== */
 .app-header {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 8px 12px;
+  flex-direction: column;
+  padding: 8px 10px 8px;
   background: var(--bg-base);
   border-bottom: 1px solid var(--border-subtle);
   flex-shrink: 0;
-  gap: 8px;
+  gap: 7px;
   z-index: 20;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.header-main-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 6px;
 }
 
 .brand-group {
@@ -139,6 +148,16 @@ body, html {
   align-items: center;
   gap: 6px;
   flex-shrink: 0;
+}
+
+.brand-logo-img {
+  border-radius: 6px;
+  filter: drop-shadow(0 0 6px rgba(138, 180, 248, 0.45));
+  transition: transform var(--transition-fast);
+}
+
+.brand-logo-img:hover {
+  transform: scale(1.08);
 }
 
 .gemini-mini-sparkle {
@@ -155,92 +174,24 @@ body, html {
 }
 
 .brand-title {
-  font-size: 14px;
+  font-size: 13.5px;
   font-weight: 700;
   letter-spacing: -0.3px;
   color: var(--text-primary);
   display: flex;
   align-items: center;
   gap: 3px;
+  user-select: none;
 }
 
 .badge-ai {
-  font-size: 10px;
+  font-size: 9.5px;
   font-weight: 800;
   padding: 1px 5px;
   border-radius: var(--radius-xs);
   background: var(--sparkle-gradient);
   color: #fff;
   letter-spacing: 0.4px;
-}
-
-/* Navigation Tabs (Pill Switcher) */
-.sidebar-nav-tabs {
-  display: flex;
-  align-items: center;
-  background: var(--bg-surface);
-  padding: 2px;
-  border-radius: var(--radius-full);
-  border: 1px solid var(--border-subtle);
-}
-
-.nav-tab-btn {
-  background: transparent;
-  border: none;
-  color: var(--text-muted);
-  font-family: var(--font-sans);
-  font-size: 11px;
-  font-weight: 600;
-  padding: 4px 10px;
-  border-radius: var(--radius-full);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  transition: all var(--transition-fast);
-  white-space: nowrap;
-}
-
-.nav-tab-btn:hover {
-  color: var(--text-primary);
-  background: var(--bg-pill);
-}
-
-.nav-tab-btn.active {
-  background: var(--bg-surface-elevated);
-  color: var(--text-primary);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-}
-
-.header-controls {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  flex-shrink: 0;
-}
-
-.icon-btn {
-  background: transparent;
-  border: none;
-  color: var(--text-secondary);
-  width: 28px;
-  height: 28px;
-  border-radius: var(--radius-full);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-
-.icon-btn:hover {
-  background: var(--bg-surface-hover);
-  color: var(--text-primary);
-}
-
-.icon-btn.active-speaker {
-  color: var(--gemini-cyan);
-  background: rgba(120, 217, 236, 0.12);
 }
 
 /* Status Pill */
@@ -258,10 +209,12 @@ body, html {
   color: var(--text-muted);
   cursor: pointer;
   transition: all var(--transition-fast);
+  user-select: none;
 }
 
 .status-pill:hover {
   border-color: var(--text-secondary);
+  background: var(--bg-surface-elevated);
 }
 
 .status-dot {
@@ -298,6 +251,114 @@ body, html {
 }
 .status-pill.status-completed .status-dot {
   background: var(--gemini-green);
+}
+
+/* Header Controls */
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.icon-btn {
+  background: var(--bg-pill);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.icon-btn:hover {
+  background: var(--bg-surface-hover);
+  color: var(--text-primary);
+  border-color: var(--border-focus);
+}
+
+.icon-btn.active-speaker {
+  color: var(--gemini-cyan);
+  background: rgba(120, 217, 236, 0.15);
+  border-color: rgba(120, 217, 236, 0.35);
+}
+
+.icon-btn.header-settings-btn {
+  background: rgba(138, 180, 248, 0.1);
+  border-color: rgba(138, 180, 248, 0.25);
+  color: var(--gemini-blue);
+}
+
+.icon-btn.header-settings-btn:hover {
+  background: rgba(138, 180, 248, 0.2);
+  border-color: var(--gemini-blue);
+  box-shadow: 0 0 10px rgba(138, 180, 248, 0.3);
+  transform: rotate(20deg);
+}
+
+/* Row 2: Navigation Tabs (Full-Width 3-Segmented Pill Switcher) */
+.sidebar-nav-tabs {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  background: var(--bg-surface);
+  padding: 2.5px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  gap: 2px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+
+.nav-tab-btn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 2px;
+  border-radius: calc(var(--radius-md) - 3px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.nav-tab-btn .tab-icon {
+  font-size: 12px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav-tab-btn .tab-label {
+  font-size: 11px;
+  letter-spacing: -0.1px;
+}
+
+.nav-tab-btn:hover {
+  color: var(--text-primary);
+  background: var(--bg-pill-hover);
+}
+
+.nav-tab-btn.active {
+  background: var(--bg-surface-elevated);
+  color: var(--text-primary);
+  font-weight: 700;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.22), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.nav-tab-btn.active .tab-icon {
+  filter: drop-shadow(0 0 4px rgba(138, 180, 248, 0.5));
 }
 
 @keyframes pulseDot {
