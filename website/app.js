@@ -132,28 +132,28 @@
 
   // Simulated tasks sequence
   const simulationScenarios = {
-    tables: {
-      goal: "Extract all structured data and table rows from this page.",
+    docs: {
+      goal: "open google docs and in a new doc file write a textbook on computer networks",
       steps: [
-        { desc: "DOM Indexer located <table class='mock-table'> with 3 telemetry rows.", reason: "Scanning table elements and converting telemetry into structured JSON..." },
-        { desc: "Sanitizing extracted strings through local privacy regex engine.", reason: "0 Raw PII leaks detected. Table attributes clean." },
-        { desc: "Extracted: Node #ND-701, #ND-702, #ND-703 (Nominal telemetry 99.98%).", reason: "Table export ready in JSON format." }
+        { desc: "Navigated to https://docs.new and initialized typography editor.", reason: "Mounting Google Docs editor workspace with zero raw cloud telemetry." },
+        { desc: "Authoring 5 comprehensive chapters on OSI layers, TCP/IP stack, and packet routing.", reason: "Local generative synthesizer structuring technical curriculum directly into editor canvas." },
+        { desc: "Google Doc completed: 5 chapters written, 0 raw PII transmitted to cloud.", reason: "Textbook on Computer Networks saved cleanly." }
       ]
     },
-    pii: {
-      goal: "Scan active webpage for sensitive PII and preview redactions.",
+    youtube: {
+      goal: "open youtube and search for melody song and play first video",
       steps: [
-        { desc: "Local OCR & Regex Scanner detected 4 confidential fields.", reason: "Credit Card (Visa), Aadhaar ID, Email, and Cardholder detected." },
-        { desc: "Applying AES-GCM token substitution on-device.", reason: "Masked to [REDACTED_CARD_VISA_8812], [REDACTED_AADHAAR_4910], [REDACTED_EMAIL_GOV]." },
-        { desc: "Firewall approved: 0 raw sensitive bytes egressed.", reason: "Privacy Firewall active and verified clean." }
+        { desc: "Navigated to https://www.youtube.com and located search bar.", reason: "Indexing DOM Set-of-Marks tags on YouTube homepage." },
+        { desc: "Typed 'melody song' into search input and submitted query.", reason: "Filtering video results with on-device privacy protection." },
+        { desc: "Identified and clicked 1st video result. Video playback streaming nominal.", reason: "Playback initiated with zero privacy leaks." }
       ]
     },
-    decision: {
-      goal: "Help me make a decision based on these mission nodes",
+    sanitize: {
+      goal: "inspect and sanitize the present page ",
       steps: [
-        { desc: "Analyzing telemetry data across 3 server nodes.", reason: "Node #ND-701 and #ND-702 are running at >99.9% health." },
-        { desc: "Identified Node #ND-703 is Queued with 94.20% telemetry.", reason: "Recommendation: Trigger Node #ND-703 restart to synchronize telemetry." },
-        { desc: "Ready to execute restart sequence upon confirmation.", reason: "Awaiting human confirmation for system modification." }
+        { desc: "Local OCR & Regex Scanner analyzed viewport DOM and visual tokens.", reason: "Detected 4 sensitive confidential fields (Passcards, emails, Govt IDs)." },
+        { desc: "Applying client-side AES-GCM-256 redaction and visual blur filters.", reason: "Masked all confidential elements locally before any network egress." },
+        { desc: "Page inspection complete: Viewport sanitized, 0 raw PII leaked, audit log generated.", reason: "Privacy Firewall active and fully verified." }
       ]
     }
   };
@@ -164,14 +164,17 @@
     if (simRunning) return;
     simRunning = true;
 
-    let scenarioKey = 'tables';
-    if (promptText.toLowerCase().includes('pii') || promptText.toLowerCase().includes('scan')) {
-      scenarioKey = 'pii';
-    } else if (promptText.toLowerCase().includes('decision')) {
-      scenarioKey = 'decision';
+    let scenarioKey = 'docs';
+    const pl = promptText.toLowerCase();
+    if (pl.includes('youtube') || pl.includes('song') || pl.includes('melody') || pl.includes('video')) {
+      scenarioKey = 'youtube';
+    } else if (pl.includes('sanitize') || pl.includes('inspect') || pl.includes('pii') || pl.includes('scan')) {
+      scenarioKey = 'sanitize';
+    } else if (pl.includes('doc') || pl.includes('network') || pl.includes('textbook')) {
+      scenarioKey = 'docs';
     }
 
-    const scenario = simulationScenarios[scenarioKey];
+    const scenario = simulationScenarios[scenarioKey] || simulationScenarios.docs;
 
     // Hide welcome, show feed
     if (simWelcomeHero) simWelcomeHero.style.display = 'none';

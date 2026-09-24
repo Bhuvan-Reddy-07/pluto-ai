@@ -173,6 +173,9 @@ export class NLPEngine {
     if (norm.includes('google') || /\b(search|search for|look up|find out|query)\b/i.test(norm)) {
       return { intent: 'google_search', confidence: 0.90 };
     }
+    if (/\b(sanitize|redact|pii|privacy audit)\b/i.test(norm) || (norm.includes('inspect') && (norm.includes('page') || norm.includes('webpage') || norm.includes('dom')))) {
+      return { intent: 'inspect_sanitize_page', confidence: 0.96 };
+    }
     if (/\b(extract|scrape|read|summarize|table|data)\b/i.test(norm)) {
       return { intent: 'extract_data', confidence: 0.88 };
     }

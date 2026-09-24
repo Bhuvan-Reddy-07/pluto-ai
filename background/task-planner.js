@@ -439,7 +439,47 @@ export class TaskPlanner {
     }
 
     // =========================================================================
-    // PLAN TYPE H: General Autonomous Web Flow (Default Fallback)
+    // PLAN TYPE: Page Inspection & On-Device Sanitization Flow
+    // =========================================================================
+    const isInspectSanitize = /\b(inspect|sanitize|scan|redact|pii|privacy audit)\b/i.test(goalLower) && (goalLower.includes('page') || goalLower.includes('present') || goalLower.includes('current') || goalLower.includes('sanitize') || goalLower.includes('inspect'));
+    if (isInspectSanitize) {
+      milestones.push({
+        id: milestoneId++,
+        title: "Perceive & Index Page DOM",
+        description: "Extract Set-of-Marks tags and visual hierarchy on current tab",
+        type: "perceive",
+        status: "pending"
+      });
+
+      milestones.push({
+        id: milestoneId++,
+        title: "Scan On-Device for Sensitive PII",
+        description: "Detect credentials, financial tokens, identity records, and sensitive forms",
+        type: "scan_pii",
+        status: "pending"
+      });
+
+      milestones.push({
+        id: milestoneId++,
+        title: "Apply Privacy Firewall & Redactions",
+        description: "Sanitize visual canvas and mask DOM nodes locally",
+        type: "sanitize_page",
+        status: "pending"
+      });
+
+      milestones.push({
+        id: milestoneId++,
+        title: "Verify Sanitization & Finalize Audit",
+        description: "Confirm zero raw PII leaks and display sanitized preview",
+        type: "verify",
+        status: "pending"
+      });
+
+      return milestones;
+    }
+
+    // =========================================================================
+    // PLAN TYPE I: General Autonomous Web Flow (Default Fallback)
     // =========================================================================
     if (platformInfo.targetUrl && platformInfo.platform !== 'general_web') {
       milestones.push({

@@ -97,6 +97,26 @@ assert(int5.intent === "github_explore", `Classified GitHub intent correctly (${
 const int6 = NLPEngine.classifyIntent("Authenticate officer ISRO-CMD-7712 with password Gaganyaan#2026 and authorize uplink");
 assert(int6.intent === "isro_mission", `Classified ISRO Mission intent correctly (${int6.intent})`);
 
+// 3 Default Commands verification
+const defCmd1 = "open google docs and in a new doc file write a textbook on computer networks";
+const defCmd2 = "open youtube and search for melody song and play first video";
+const defCmd3 = "inspect and sanitize the present page ";
+
+const intDef1 = NLPEngine.classifyIntent(defCmd1);
+assert(intDef1.intent === "doc_author", `Default Command 1 classified as doc_author (${intDef1.intent})`);
+
+const intDef2 = NLPEngine.classifyIntent(defCmd2);
+assert(intDef2.intent === "youtube_search_play", `Default Command 2 classified as youtube_search_play (${intDef2.intent})`);
+
+const intDef3 = NLPEngine.classifyIntent(defCmd3);
+assert(intDef3.intent === "inspect_sanitize_page", `Default Command 3 classified as inspect_sanitize_page (${intDef3.intent})`);
+
+const qDef2 = NLPEngine.extractSearchQuery(defCmd2);
+assert(qDef2 === "melody song", `Default Command 2 extracted query "${qDef2}" === "melody song"`);
+
+const ordDef2 = NLPEngine.extractTargetOrdinal(defCmd2);
+assert(ordDef2.index === 0, `Default Command 2 ordinal index is 0 (first video)`);
+
 // -----------------------------------------------------------------------------
 // 6. Precision Search Query Extraction
 // -----------------------------------------------------------------------------
@@ -193,6 +213,11 @@ assert(plan1[2].ordinalIndex === 1, `Milestone 3 video ordinal accurately set to
 const plan2 = TaskPlanner.decomposeGoal("can you please open a new doc and author an essay on modern operating systems", "about:blank");
 assert(plan2.some(m => m.type === 'navigate' && m.targetUrl.includes('docs.new')), "TaskPlanner generated Google Docs initialization milestone");
 assert(plan2.some(m => m.type === 'type_content'), "TaskPlanner included comprehensive content typing milestone");
+
+const plan3 = TaskPlanner.decomposeGoal(defCmd3, "about:blank");
+assert(plan3.length === 4, `TaskPlanner generated 4 milestones for "${defCmd3}"`);
+assert(plan3.some(m => m.type === 'scan_pii'), "TaskPlanner included scan_pii milestone for inspect & sanitize goal");
+assert(plan3.some(m => m.type === 'sanitize_page'), "TaskPlanner included sanitize_page milestone for inspect & sanitize goal");
 
 console.log("\n==========================================================");
 console.log(`  🎯 NLP ENGINE SUITE SUMMARY: ${passed} PASSED, ${failed} FAILED`);
