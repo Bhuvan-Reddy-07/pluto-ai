@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920, initial-scale=1.0">
+  <title>Pluto AI — UML Architecture & Working Pipeline (9:16)</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      width: 1080px;
+      height: 1920px;
+      background-color: #ffffff;
+      color: #000000;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      margin: 0;
+      padding: 32px 36px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Outer UML Frame */
+    .uml-canvas {
+      width: 100%;
+      height: 100%;
+      border: 2px solid #000000;
+      padding: 24px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: #ffffff;
+      position: relative;
+    }
+
+    /* UML Frame Header */
+    .uml-frame-header {
+      border: 1.5px solid #000000;
+      display: inline-block;
+      padding: 6px 14px;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      align-self: flex-start;
+      margin-bottom: 8px;
+      background: #ffffff;
+    }
+
+    .header-block {
+      text-align: center;
+      border-bottom: 2px solid #000000;
+      padding-bottom: 14px;
+      margin-bottom: 18px;
+    }
+
+    .main-title {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .sub-title {
+      font-family: "Courier New", Courier, monospace;
+      font-size: 13px;
+      font-weight: 600;
+      color: #000000;
+    }
+
+    /* Start / End Node */
+    .uml-start-node {
+      width: 22px;
+      height: 22px;
+      background: #000000;
+      border-radius: 50%;
+      margin: 0 auto 6px;
+    }
+
+    .uml-end-node {
+      width: 24px;
+      height: 24px;
+      border: 2px solid #000000;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 6px auto 0;
+    }
+
+    .uml-end-inner {
+      width: 14px;
+      height: 14px;
+      background: #000000;
+      border-radius: 50%;
+    }
+
+    /* Section Boxes */
+    .section-box {
+      border: 1.5px solid #000000;
+      border-radius: 6px;
+      padding: 12px 16px;
+      position: relative;
+      background: #ffffff;
+      margin-bottom: 12px;
+    }
+
+    .section-tag {
+      position: absolute;
+      top: -10px;
+      left: 18px;
+      background: #ffffff;
+      padding: 0 8px;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* UML Items Grid */
+    .uml-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .uml-grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+    }
+
+    .uml-card {
+      border: 1px solid #000000;
+      border-radius: 4px;
+      padding: 8px 10px;
+      background: #ffffff;
+    }
+
+    .uml-card-title {
+      font-size: 12px;
+      font-weight: 700;
+      font-family: "Courier New", Courier, monospace;
+      border-bottom: 1px dashed #000000;
+      padding-bottom: 4px;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .uml-card-desc {
+      font-size: 11.5px;
+      line-height: 1.35;
+    }
+
+    /* Connectors & Arrows */
+    .uml-arrow-down {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 4px 0;
+      line-height: 1;
+    }
+
+    .arrow-line {
+      width: 1.5px;
+      height: 14px;
+      background: #000000;
+    }
+
+    .arrow-head {
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 6px solid #000000;
+    }
+
+    .arrow-label {
+      font-family: "Courier New", Courier, monospace;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      background: #ffffff;
+      padding: 1px 6px;
+      border: 1px solid #000000;
+      border-radius: 3px;
+      margin: 2px 0;
+    }
+
+    /* Decision Diamond */
+    .decision-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 6px 0;
+    }
+
+    .uml-diamond {
+      border: 1.5px solid #000000;
+      transform: rotate(45deg);
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      margin: 6px auto;
+    }
+
+    .diamond-text {
+      transform: rotate(-45deg);
+      font-size: 9px;
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.1;
+      font-family: "Courier New", Courier, monospace;
+    }
+
+    /* Privacy Boundary Wall */
+    .privacy-boundary {
+      border: 2px dashed #000000;
+      background: #ffffff;
+      padding: 10px 14px;
+      border-radius: 6px;
+      margin: 8px 0;
+      position: relative;
+    }
+
+    .boundary-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1.5px solid #000000;
+      padding-bottom: 6px;
+      margin-bottom: 8px;
+    }
+
+    .boundary-title {
+      font-family: "Courier New", Courier, monospace;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    .boundary-badge {
+      border: 1px solid #000000;
+      padding: 1px 7px;
+      font-size: 10px;
+      font-weight: 700;
+      font-family: "Courier New", Courier, monospace;
+    }
+
+    /* Loop Feedback Container */
+    .loop-feedback-box {
+      border: 1px solid #000000;
+      border-left: 6px solid #000000;
+      padding: 8px 12px;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 11px;
+      line-height: 1.4;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Footer Metadata */
+    .uml-footer {
+      border-top: 1.5px solid #000000;
+      padding-top: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 10.5px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="uml-canvas">
+
+    <!-- UML Header Indicator -->
+    <div>
+      <div class="uml-frame-header">
+        activity & sequence | Pluto AI Working Pipeline
+      </div>
+
+      <div class="header-block">
+        <h1 class="main-title">Pluto AI System Architecture</h1>
+        <div class="sub-title">«UML 2.5 Activity & Zero-Trust Boundary Execution Pipeline»</div>
+      </div>
+    </div>
+
+    <!-- Step 1: User & Input Initialization -->
+    <div style="text-align: center;">
+      <div class="uml-start-node" title="Initial State"></div>
+      <div class="arrow-line" style="margin: 0 auto;"></div>
+      <div class="arrow-head" style="margin: 0 auto;"></div>
+    </div>
+
+    <!-- PHASE 1: CLIENT INITIALIZATION -->
+    <div class="section-box">
+      <div class="section-tag">[1] Local Client / Extension Runtime</div>
+      <div class="uml-grid-2">
+        <div class="uml-card">
+          <div class="uml-card-title">
+            <span>«actor» User Task</span>
+            <span>01</span>
+          </div>
+          <div class="uml-card-desc">
+            Natural language prompt or voice command entered into Pluto Side Panel (e.g. Google Docs authoring, YouTube search).
+          </div>
+        </div>
+        <div class="uml-card">
+          <div class="uml-card-title">
+            <span>«controller» Sidebar Coordinator</span>
+            <span>02</span>
+          </div>
+          <div class="uml-card-desc">
+            Dispatches task goal, validates model BYOK configuration, and initializes background execution session.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Connector -->
+    <div class="uml-arrow-down">
+      <div class="arrow-line"></div>
+      <div class="arrow-head"></div>
+      <div class="arrow-label">invokes on-device perception pass</div>
+    </div>
+
+    <!-- PHASE 2: ON-DEVICE PERCEPTION & VISUAL GROUNDING -->
+    <div class="section-box">
+      <div class="section-tag">[2] On-Device Perception & Grounding</div>
+      <div class="uml-grid-3">
+        <div class="uml-card">
+          <div class="uml-card-title">
+            <span>DOM Tagging</span>
+            <span>SoM</span>
+          </div>
+          <div class="uml-card-desc">
+            Set-of-Marks engine parses interactive targets and stamps deterministic coordinate tags [TAG_1, TAG_2...].
+          </div>
+        </div>
+        <div class="uml-card">
+          <div class="uml-card-title">
+            <span>Local OCR</span>
+            <span>WASM</span>
+          </div>
+          <div class="uml-card-desc">
+            Client-side Canvas 2D OCR extracts on-screen text coordinates without cloud assistance.
+          </div>
+        </div>
+        <div class="uml-card">
+          <div class="uml-card-title">
+            <span>Edge Vision</span>
+            <span>INT8</span>
+          </div>
+          <div class="uml-card-desc">
+            BlazeFace INT8 neural model detects bounding boxes for biometric and facial regions in local memory.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Connector -->
+    <div class="uml-arrow-down">
+      <div class="arrow-line"></div>
+      <div class="arrow-head"></div>
+      <div class="arrow-label">passes raw viewport to local filter</div>
+    </div>
+
+    <!-- PHASE 3: PRIVACY FIREWALL & REDACTION FILTER -->
+    <div class="section-box">
+      <div class="section-tag">[3] On-Device Privacy Firewall & Redactor</div>
+      
+      <div class="uml-grid-2" style="margin-bottom: 8px;">
+        <div class="uml-card">
+          <div class="uml-card-title">
+            <span>«detector» PII Regex & Luhn</span>
+          </div>
+          <div class="uml-card-desc">
+            Inspects DOM attributes, input values, passwords, credit card Luhn sums, PAN, and credentials locally.
+          </div>
+        </div>
+        <div class="uml-card">
+          <div class="uml-card-title">
+            <span>«engine» Canvas Redactor</span>
+          </div>
+          <div class="uml-card-desc">
+            Applies Gaussian blur to faces, blackouts to credentials, and synthetic tokens to private identifiers.
+          </div>
+        </div>
+      </div>
+
+      <!-- Decision Diamond inside Privacy Module -->
+      <div style="display: flex; align-items: center; justify-content: space-around; border-top: 1px dashed #000000; padding-top: 8px;">
+        <div style="font-family: 'Courier New', monospace; font-size: 11px; font-weight: 700;">
+          [Decision Guard] Sensitive Data Detected?
+        </div>
+        <div style="font-family: 'Courier New', monospace; font-size: 11px;">
+          [YES] ──▶ <strong>Cryptographic Token Masking</strong><br>
+          [NO] &nbsp;──▶ <strong>Direct Clean Token Pipeline</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- Connector -->
+    <div class="uml-arrow-down">
+      <div class="arrow-line"></div>
+      <div class="arrow-head"></div>
+      <div class="arrow-label">encrypts sanitized payload via AES-GCM-256</div>
+    </div>
+
+    <!-- PRIVACY PERIMETER BOUNDARY WALL -->
+    <div class="privacy-boundary">
+      <div class="boundary-banner">
+        <span class="boundary-title">=== ZERO-KNOWLEDGE PRIVACY BOUNDARY ===</span>
+        <span class="boundary-badge">0 RAW PII TRANSMITTED</span>
+      </div>
+      <div style="font-size: 11.5px; line-height: 1.4; font-family: 'Courier New', Courier, monospace;">
+        • Strict perimeter wall: Passwords, card numbers, and faces NEVER cross this boundary.<br>
+        • Outbound transmission contains ONLY: Anonymized SoM coordinate IDs + task goal.
+      </div>
+    </div>
+
+    <!-- Connector Across Boundary -->
+    <div class="uml-arrow-down">
+      <div class="arrow-line"></div>
+      <div class="arrow-head"></div>
+      <div class="arrow-label">outbound HTTP POST (Sanitized Tokens Only)</div>
+    </div>
+
+    <!-- PHASE 4: EXTERNAL / LOCAL LLM REASONING -->
+    <div class="section-box">
+      <div class="section-tag">[4] Multi-Provider Reasoning (BYOK / Offline)</div>
+      <div class="uml-grid-2">
+        <div class="uml-card">
+          <div class="uml-card-title">
+            <span>Cloud LLM (BYOK)</span>
+            <span>Gemini / Claude / GPT</span>
+          </div>
+          <div class="uml-card-desc">
+            Analyzes sanitized Set-of-Marks tokens. Infers next logical action (click, type, scroll, wait, finish).
+          </div>
+        </div>
+        <div class="uml-card">
+          <div class="uml-card-title">
+            <span>🔒 Offline Engine</span>
+            <span>Local / Air-Gapped</span>
+          </div>
+          <div class="uml-card-desc">
+            Local Ollama model or deterministic execution simulator for air-gapped classified environments.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Connector -->
+    <div class="uml-arrow-down">
+      <div class="arrow-line"></div>
+      <div class="arrow-head"></div>
+      <div class="arrow-label">returns structured action decision JSON</div>
+    </div>
+
+    <!-- PHASE 5: SAFETY GOVERNOR & HARDWARE ACTUATION -->
+    <div class="section-box">
+      <div class="section-tag">[5] Safety Governor & Actuation Engine</div>
+
+      <!-- Human in the Loop Guard -->
+      <div class="uml-card" style="margin-bottom: 8px;">
+        <div class="uml-card-title">
+          <span>«guard» Human-in-the-Loop Safety Interceptor</span>
+          <span>Risk Check</span>
+        </div>
+        <div class="uml-card-desc" style="display: flex; justify-content: space-between; align-items: center;">
+          <span>Is Action Irreversible? (Payment, Auth, Account Deletion)</span>
+          <span style="font-family: 'Courier New', monospace; font-size: 11px; font-weight: 700;">
+            [HIGH RISK] ➔ Halt & Request User Approval
+          </span>
+        </div>
+      </div>
+
+      <div class="uml-grid-2">
+        <div class="uml-card">
+          <div class="uml-card-title">
+            <span>«hardware» CDP Actuator</span>
+          </div>
+          <div class="uml-card-desc">
+            Synthesizes trusted mouse and keyboard events via Chrome DevTools Protocol at marked coordinates.
+          </div>
+        </div>
+        <div class="uml-card">
+          <div class="uml-card-title">
+            <span>«verifier» DOM State Verifier</span>
+          </div>
+          <div class="uml-card-desc">
+            Validates page mutation, confirms expected state transition, and logs zero-leak audit proof.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PHASE 6: EXECUTION LOOP OR FINISH -->
+    <div class="loop-feedback-box">
+      <div>
+        <strong>[UML Loop Condition]:</strong> while (goal != COMPLETED && step &lt; max_steps)
+        <br>
+        <span style="font-size: 10.5px;">Update progress bar ➔ Advance milestone ➔ Re-perceive active viewport</span>
+      </div>
+      <div style="font-size: 13px; font-weight: 700;">
+        ↺ Loop / ⦿ Finish
+      </div>
+    </div>
+
+    <!-- Terminal State -->
+    <div style="text-align: center; margin: 4px 0;">
+      <div class="uml-end-node" title="Terminal State">
+        <div class="uml-end-inner"></div>
+      </div>
+      <div style="font-family: 'Courier New', monospace; font-size: 10px; font-weight: 700; text-transform: uppercase; margin-top: 2px;">
+        Task Completed & Verified Clean
+      </div>
+    </div>
+
+    <!-- UML Footer Metadata -->
+    <div class="uml-footer">
+      <span>Pluto AI Architecture Specification v2.0.0</span>
+      <span>Aspect Ratio: 9:16 (1080 x 1920)</span>
+      <span>Theme: Strict B&W UML</span>
+    </div>
+
+  </div>
+
+</body>
+</html>
