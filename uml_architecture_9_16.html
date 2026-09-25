@@ -18,19 +18,18 @@
       color: #000000;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       margin: 0;
-      padding: 32px 36px;
+      padding: 18px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
     }
 
-    /* Outer UML Frame */
+    /* Outer UML Canvas Frame */
     .uml-canvas {
       width: 100%;
       height: 100%;
-      border: 2px solid #000000;
-      padding: 24px 28px;
+      border: 3.5px solid #000000;
+      padding: 20px 26px 16px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -38,128 +37,134 @@
       position: relative;
     }
 
-    /* UML Frame Header */
+    /* Top UML Frame Header */
     .uml-frame-header {
-      border: 1.5px solid #000000;
+      border: 2px solid #000000;
       display: inline-block;
-      padding: 6px 14px;
+      padding: 6px 20px;
       font-family: "Courier New", Courier, monospace;
-      font-size: 13px;
-      font-weight: 700;
+      font-size: 18px;
+      font-weight: 900;
       text-transform: uppercase;
-      letter-spacing: 0.8px;
+      letter-spacing: 1px;
       align-self: flex-start;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       background: #ffffff;
     }
 
     .header-block {
       text-align: center;
-      border-bottom: 2px solid #000000;
-      padding-bottom: 14px;
-      margin-bottom: 18px;
+      border-bottom: 3px solid #000000;
+      padding-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .main-title {
-      font-size: 26px;
-      font-weight: 800;
+      font-size: 44px;
+      font-weight: 950;
       letter-spacing: -0.5px;
       text-transform: uppercase;
-      margin-bottom: 4px;
+      margin-bottom: 2px;
+      line-height: 1.08;
     }
 
     .sub-title {
       font-family: "Courier New", Courier, monospace;
-      font-size: 13px;
-      font-weight: 600;
+      font-size: 19.5px;
+      font-weight: 800;
       color: #000000;
+      letter-spacing: 0.2px;
     }
 
-    /* Start / End Node */
+    /* Start / End Nodes */
     .uml-start-node {
-      width: 22px;
-      height: 22px;
+      width: 26px;
+      height: 26px;
       background: #000000;
       border-radius: 50%;
-      margin: 0 auto 6px;
+      margin: 0 auto;
     }
 
     .uml-end-node {
-      width: 24px;
-      height: 24px;
-      border: 2px solid #000000;
+      width: 32px;
+      height: 32px;
+      border: 3px solid #000000;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 6px auto 0;
+      margin: 0 auto;
     }
 
     .uml-end-inner {
-      width: 14px;
-      height: 14px;
+      width: 18px;
+      height: 18px;
       background: #000000;
       border-radius: 50%;
     }
 
     /* Section Boxes */
     .section-box {
-      border: 1.5px solid #000000;
-      border-radius: 6px;
-      padding: 12px 16px;
+      border: 2.5px solid #000000;
+      border-radius: 8px;
+      padding: 16px 18px 12px;
       position: relative;
       background: #ffffff;
-      margin-bottom: 12px;
     }
 
     .section-tag {
       position: absolute;
-      top: -10px;
+      top: -15px;
       left: 18px;
       background: #ffffff;
-      padding: 0 8px;
+      padding: 2px 14px;
       font-family: "Courier New", Courier, monospace;
-      font-size: 11px;
-      font-weight: 700;
+      font-size: 18px;
+      font-weight: 900;
       text-transform: uppercase;
       letter-spacing: 0.5px;
+      border: 2px solid #000000;
+      border-radius: 4px;
     }
 
-    /* UML Items Grid */
+    /* UML Items Grids */
     .uml-grid-2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
+      gap: 14px;
     }
 
     .uml-grid-3 {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      gap: 10px;
+      gap: 12px;
     }
 
     .uml-card {
-      border: 1px solid #000000;
-      border-radius: 4px;
-      padding: 8px 10px;
+      border: 2px solid #000000;
+      border-radius: 6px;
+      padding: 10px 14px;
       background: #ffffff;
     }
 
     .uml-card-title {
-      font-size: 12px;
-      font-weight: 700;
+      font-size: 19px;
+      font-weight: 900;
       font-family: "Courier New", Courier, monospace;
-      border-bottom: 1px dashed #000000;
-      padding-bottom: 4px;
-      margin-bottom: 4px;
+      border-bottom: 2px dashed #000000;
+      padding-bottom: 5px;
+      margin-bottom: 6px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      letter-spacing: -0.2px;
     }
 
     .uml-card-desc {
-      font-size: 11.5px;
-      line-height: 1.35;
+      font-size: 17.5px;
+      line-height: 1.34;
+      font-weight: 600;
+      color: #000000;
     }
 
     /* Connectors & Arrows */
@@ -167,72 +172,43 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin: 4px 0;
+      margin: 0;
       line-height: 1;
     }
 
     .arrow-line {
-      width: 1.5px;
-      height: 14px;
+      width: 2.5px;
+      height: 8px;
       background: #000000;
     }
 
     .arrow-head {
       width: 0;
       height: 0;
-      border-left: 5px solid transparent;
-      border-right: 5px solid transparent;
-      border-top: 6px solid #000000;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 8px solid #000000;
     }
 
     .arrow-label {
       font-family: "Courier New", Courier, monospace;
-      font-size: 10px;
-      font-weight: 700;
+      font-size: 15.5px;
+      font-weight: 900;
       text-transform: uppercase;
       background: #ffffff;
-      padding: 1px 6px;
-      border: 1px solid #000000;
-      border-radius: 3px;
-      margin: 2px 0;
-    }
-
-    /* Decision Diamond */
-    .decision-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 6px 0;
-    }
-
-    .uml-diamond {
-      border: 1.5px solid #000000;
-      transform: rotate(45deg);
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #ffffff;
-      margin: 6px auto;
-    }
-
-    .diamond-text {
-      transform: rotate(-45deg);
-      font-size: 9px;
-      font-weight: 700;
-      text-align: center;
-      line-height: 1.1;
-      font-family: "Courier New", Courier, monospace;
+      padding: 3px 12px;
+      border: 2px solid #000000;
+      border-radius: 4px;
+      margin: 1px 0;
+      letter-spacing: 0.3px;
     }
 
     /* Privacy Boundary Wall */
     .privacy-boundary {
-      border: 2px dashed #000000;
+      border: 3px dashed #000000;
       background: #ffffff;
-      padding: 10px 14px;
-      border-radius: 6px;
-      margin: 8px 0;
+      padding: 12px 18px;
+      border-radius: 8px;
       position: relative;
     }
 
@@ -240,35 +216,43 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1.5px solid #000000;
+      border-bottom: 2.5px solid #000000;
       padding-bottom: 6px;
       margin-bottom: 8px;
     }
 
     .boundary-title {
       font-family: "Courier New", Courier, monospace;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.8px;
+      font-size: 20px;
+      font-weight: 950;
+      letter-spacing: 0.6px;
       text-transform: uppercase;
     }
 
     .boundary-badge {
-      border: 1px solid #000000;
-      padding: 1px 7px;
-      font-size: 10px;
-      font-weight: 700;
+      border: 2px solid #000000;
+      padding: 3px 10px;
+      font-size: 15px;
+      font-weight: 900;
       font-family: "Courier New", Courier, monospace;
+      background: #ffffff;
     }
 
-    /* Loop Feedback Container */
-    .loop-feedback-box {
-      border: 1px solid #000000;
-      border-left: 6px solid #000000;
-      padding: 8px 12px;
+    .boundary-desc {
+      font-size: 17.5px;
+      line-height: 1.38;
       font-family: "Courier New", Courier, monospace;
-      font-size: 11px;
-      line-height: 1.4;
+      font-weight: 700;
+    }
+
+    /* Loop Feedback Box */
+    .loop-feedback-box {
+      border: 2.5px solid #000000;
+      border-left: 10px solid #000000;
+      padding: 10px 18px;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 17.5px;
+      line-height: 1.32;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -276,14 +260,14 @@
 
     /* Footer Metadata */
     .uml-footer {
-      border-top: 1.5px solid #000000;
+      border-top: 2.5px solid #000000;
       padding-top: 8px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       font-family: "Courier New", Courier, monospace;
-      font-size: 10.5px;
-      font-weight: 600;
+      font-size: 15px;
+      font-weight: 800;
     }
   </style>
 </head>
@@ -291,22 +275,22 @@
 
   <div class="uml-canvas">
 
-    <!-- UML Header Indicator -->
+    <!-- UML Header -->
     <div>
       <div class="uml-frame-header">
-        activity & sequence | Pluto AI Working Pipeline
+        activity &amp; sequence | Pluto AI Working Pipeline
       </div>
 
       <div class="header-block">
         <h1 class="main-title">Pluto AI System Architecture</h1>
-        <div class="sub-title">«UML 2.5 Activity & Zero-Trust Boundary Execution Pipeline»</div>
+        <div class="sub-title">«UML 2.5 Activity &amp; Zero-Trust Boundary Pipeline»</div>
       </div>
     </div>
 
-    <!-- Step 1: User & Input Initialization -->
+    <!-- Start Node -->
     <div style="text-align: center;">
       <div class="uml-start-node" title="Initial State"></div>
-      <div class="arrow-line" style="margin: 0 auto;"></div>
+      <div class="arrow-line" style="margin: 0 auto; height: 8px;"></div>
       <div class="arrow-head" style="margin: 0 auto;"></div>
     </div>
 
@@ -320,16 +304,16 @@
             <span>01</span>
           </div>
           <div class="uml-card-desc">
-            Natural language prompt or voice command entered into Pluto Side Panel (e.g. Google Docs authoring, YouTube search).
+            Natural language prompt or voice command entered in Pluto Side Panel (e.g. Google Docs authoring, YouTube workflow).
           </div>
         </div>
         <div class="uml-card">
           <div class="uml-card-title">
-            <span>«controller» Sidebar Coordinator</span>
+            <span>«controller» Coordinator</span>
             <span>02</span>
           </div>
           <div class="uml-card-desc">
-            Dispatches task goal, validates model BYOK configuration, and initializes background execution session.
+            Dispatches task goal, validates user BYOK configuration, and initializes background agent session.
           </div>
         </div>
       </div>
@@ -344,7 +328,7 @@
 
     <!-- PHASE 2: ON-DEVICE PERCEPTION & VISUAL GROUNDING -->
     <div class="section-box">
-      <div class="section-tag">[2] On-Device Perception & Grounding</div>
+      <div class="section-tag">[2] On-Device Perception &amp; Grounding</div>
       <div class="uml-grid-3">
         <div class="uml-card">
           <div class="uml-card-title">
@@ -352,7 +336,7 @@
             <span>SoM</span>
           </div>
           <div class="uml-card-desc">
-            Set-of-Marks engine parses interactive targets and stamps deterministic coordinate tags [TAG_1, TAG_2...].
+            Set-of-Marks engine parses targets and stamps deterministic IDs [TAG_1, TAG_2...].
           </div>
         </div>
         <div class="uml-card">
@@ -361,7 +345,7 @@
             <span>WASM</span>
           </div>
           <div class="uml-card-desc">
-            Client-side Canvas 2D OCR extracts on-screen text coordinates without cloud assistance.
+            Client-side Canvas 2D OCR extracts coordinates without cloud assistance.
           </div>
         </div>
         <div class="uml-card">
@@ -370,7 +354,7 @@
             <span>INT8</span>
           </div>
           <div class="uml-card-desc">
-            BlazeFace INT8 neural model detects bounding boxes for biometric and facial regions in local memory.
+            BlazeFace INT8 neural model detects bounding boxes for biometric regions in memory.
           </div>
         </div>
       </div>
@@ -385,15 +369,15 @@
 
     <!-- PHASE 3: PRIVACY FIREWALL & REDACTION FILTER -->
     <div class="section-box">
-      <div class="section-tag">[3] On-Device Privacy Firewall & Redactor</div>
+      <div class="section-tag">[3] On-Device Privacy Firewall &amp; Redactor</div>
       
       <div class="uml-grid-2" style="margin-bottom: 8px;">
         <div class="uml-card">
           <div class="uml-card-title">
-            <span>«detector» PII Regex & Luhn</span>
+            <span>«detector» PII Regex &amp; Luhn</span>
           </div>
           <div class="uml-card-desc">
-            Inspects DOM attributes, input values, passwords, credit card Luhn sums, PAN, and credentials locally.
+            Scans DOM values, passwords, credit card Luhn sums, PAN, and credentials locally.
           </div>
         </div>
         <div class="uml-card">
@@ -401,18 +385,18 @@
             <span>«engine» Canvas Redactor</span>
           </div>
           <div class="uml-card-desc">
-            Applies Gaussian blur to faces, blackouts to credentials, and synthetic tokens to private identifiers.
+            Applies Gaussian blur to faces, blackouts to credentials, and masks private tokens.
           </div>
         </div>
       </div>
 
-      <!-- Decision Diamond inside Privacy Module -->
-      <div style="display: flex; align-items: center; justify-content: space-around; border-top: 1px dashed #000000; padding-top: 8px;">
-        <div style="font-family: 'Courier New', monospace; font-size: 11px; font-weight: 700;">
+      <!-- Decision Guard -->
+      <div style="display: flex; align-items: center; justify-content: space-between; border-top: 2px dashed #000000; padding-top: 8px;">
+        <div style="font-family: 'Courier New', monospace; font-size: 17.5px; font-weight: 900;">
           [Decision Guard] Sensitive Data Detected?
         </div>
-        <div style="font-family: 'Courier New', monospace; font-size: 11px;">
-          [YES] ──▶ <strong>Cryptographic Token Masking</strong><br>
+        <div style="font-family: 'Courier New', monospace; font-size: 17px; font-weight: 800;">
+          [YES] ──▶ <strong>Token Masking &amp; Blackout</strong><br>
           [NO] &nbsp;──▶ <strong>Direct Clean Token Pipeline</strong>
         </div>
       </div>
@@ -431,7 +415,7 @@
         <span class="boundary-title">=== ZERO-KNOWLEDGE PRIVACY BOUNDARY ===</span>
         <span class="boundary-badge">0 RAW PII TRANSMITTED</span>
       </div>
-      <div style="font-size: 11.5px; line-height: 1.4; font-family: 'Courier New', Courier, monospace;">
+      <div class="boundary-desc">
         • Strict perimeter wall: Passwords, card numbers, and faces NEVER cross this boundary.<br>
         • Outbound transmission contains ONLY: Anonymized SoM coordinate IDs + task goal.
       </div>
@@ -460,7 +444,7 @@
         <div class="uml-card">
           <div class="uml-card-title">
             <span>🔒 Offline Engine</span>
-            <span>Local / Air-Gapped</span>
+            <span>Air-Gapped Local</span>
           </div>
           <div class="uml-card-desc">
             Local Ollama model or deterministic execution simulator for air-gapped classified environments.
@@ -478,7 +462,7 @@
 
     <!-- PHASE 5: SAFETY GOVERNOR & HARDWARE ACTUATION -->
     <div class="section-box">
-      <div class="section-tag">[5] Safety Governor & Actuation Engine</div>
+      <div class="section-tag">[5] Safety Governor &amp; Actuation Engine</div>
 
       <!-- Human in the Loop Guard -->
       <div class="uml-card" style="margin-bottom: 8px;">
@@ -487,9 +471,9 @@
           <span>Risk Check</span>
         </div>
         <div class="uml-card-desc" style="display: flex; justify-content: space-between; align-items: center;">
-          <span>Is Action Irreversible? (Payment, Auth, Account Deletion)</span>
-          <span style="font-family: 'Courier New', monospace; font-size: 11px; font-weight: 700;">
-            [HIGH RISK] ➔ Halt & Request User Approval
+          <span style="font-weight: 800;">Is Action Irreversible? (Payment, Auth, Deletion)</span>
+          <span style="font-family: 'Courier New', monospace; font-size: 16.5px; font-weight: 900; border: 2px solid #000000; padding: 2px 8px; border-radius: 4px;">
+            [HIGH RISK] ➔ Halt &amp; Request User Approval
           </span>
         </div>
       </div>
@@ -517,22 +501,22 @@
     <!-- PHASE 6: EXECUTION LOOP OR FINISH -->
     <div class="loop-feedback-box">
       <div>
-        <strong>[UML Loop Condition]:</strong> while (goal != COMPLETED && step &lt; max_steps)
+        <strong style="font-size: 18.5px;">[UML Loop Condition]:</strong> while (goal != COMPLETED &amp;&amp; step &lt; max_steps)
         <br>
-        <span style="font-size: 10.5px;">Update progress bar ➔ Advance milestone ➔ Re-perceive active viewport</span>
+        <span style="font-size: 16.5px; font-weight: 700;">Update progress bar ➔ Advance milestone ➔ Re-perceive active viewport</span>
       </div>
-      <div style="font-size: 13px; font-weight: 700;">
+      <div style="font-size: 18.5px; font-weight: 900; border: 2px solid #000000; padding: 5px 12px; border-radius: 4px; white-space: nowrap;">
         ↺ Loop / ⦿ Finish
       </div>
     </div>
 
     <!-- Terminal State -->
-    <div style="text-align: center; margin: 4px 0;">
+    <div style="text-align: center; margin: 1px 0;">
       <div class="uml-end-node" title="Terminal State">
         <div class="uml-end-inner"></div>
       </div>
-      <div style="font-family: 'Courier New', monospace; font-size: 10px; font-weight: 700; text-transform: uppercase; margin-top: 2px;">
-        Task Completed & Verified Clean
+      <div style="font-family: 'Courier New', monospace; font-size: 16px; font-weight: 900; text-transform: uppercase; margin-top: 3px;">
+        Task Completed &amp; Verified Clean
       </div>
     </div>
 
@@ -540,7 +524,7 @@
     <div class="uml-footer">
       <span>Pluto AI Architecture Specification v2.0.0</span>
       <span>Aspect Ratio: 9:16 (1080 x 1920)</span>
-      <span>Theme: Strict B&W UML</span>
+      <span>Theme: Strict B&amp;W UML</span>
     </div>
 
   </div>
